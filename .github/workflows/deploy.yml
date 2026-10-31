@@ -1,0 +1,17 @@
+name: Deploy menu
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger server webhook
+        run: |
+          curl --fail --silent --show-error \
+            --max-time 60 --retry 2 --retry-delay 5 \
+            -X POST \
+            -H "X-Token: ${{ secrets.WEBHOOK_SECRET_X_TOKEN }}" \
+            "${{ secrets.WEBHOOK_URL }}"
