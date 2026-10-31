@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Areca - The Culinary Destination | Digital Menu</title>
+  <meta name="description" content="Official digital menu of Areca - The Culinary Destination by La-Flora. Authentic Breakfast, Soups, Tandoor, Italian, Oriental, Indian and Beverages.">
+  <meta name="theme-color" content="#F5F2EB">
+  
+  <!-- Google Fonts: Script matching PDF + Elegant Serif & Clean Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Sticky Luxury Mobile Header matching PDF Paper & Gold Palette -->
+  <header class="app-header" id="appHeader">
+    <div class="header-inner">
+      <div class="brand-block">
+        <h1 class="brand-title">Areca</h1>
+        <p class="brand-sub">THE CULINARY DESTINATION <span class="brand-by">by La-Flora</span></p>
+      </div>
+
+      <div class="header-actions">
+        <!-- Restaurant Timings & Notes (Page 16 of PDF) -->
+        <button class="header-btn" id="infoModalBtn" title="Restaurant Info & Hours" aria-label="Restaurant information and timings" type="button">
+          <i class="fa-solid fa-clock" aria-hidden="true"></i>
+          <span>Timings</span>
+        </button>
+
+        <!-- QR Code for Tables / Counter -->
+        <button class="header-btn qr-btn" id="qrModalBtn" title="Menu QR Code" aria-label="View or print menu QR code" type="button">
+          <i class="fa-solid fa-qrcode" aria-hidden="true"></i>
+          <span>QR Code</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Input -->
+    <div class="search-bar-wrap">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+        <input 
+          type="search" 
+          id="menuSearchInput" 
+          placeholder="Search menu (e.g. Dosa, Paneer, Soup, Pasta...)"
+          aria-label="Search dishes"
+          autocomplete="off"
+        >
+        <button class="clear-search-btn" id="clearSearchBtn" aria-label="Clear search" type="button">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Navigation Scroll matching PDF Sections -->
+    <nav class="category-nav" aria-label="Menu Sections">
+      <div class="category-nav-scroll" id="categoryNavScroll">
+        <!-- Rendered dynamically from MENU_SECTIONS -->
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Menu Presentation -->
+  <main class="menu-canvas" id="menuCanvas">
+    
+    <!-- PDF Cover Header Decoration -->
+    <div class="cover-hero">
+      <div class="cover-flourish">
+        <div class="cutlery-icon"><i class="fa-solid fa-utensils"></i></div>
+        <div class="cover-title-script">Areca</div>
+        <div class="cover-tagline">THE CULINARY DESTINATION</div>
+        <div class="cover-by">BY LA-FLORA</div>
+        <div class="cover-subtitle">TIMELESS MEMORIES</div>
+      </div>
+      <div class="gold-thin-divider"></div>
+    </div>
+
+    <!-- Active Search Results Banner -->
+    <div class="search-feedback" id="searchFeedback" style="display: none;">
+      <span id="searchCount">Showing results</span>
+      <button class="clear-filter-link" id="resetSearchBtn" type="button">Show Full Menu</button>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState" style="display: none;">
+      <p class="empty-title">No items found</p>
+      <p class="empty-desc">Please try a different search word.</p>
+      <button class="btn-menu" id="emptyClearBtn" type="button">View Complete Menu</button>
+    </div>
+
+    <!-- Menu Sections Wrapper -->
+    <div class="menu-sections-container" id="menuSectionsContainer">
+      <!-- Injected from menu-data.js -->
+    </div>
+
+    <!-- Restaurant Footer matching PDF Back Page -->
+    <footer class="pdf-footer">
+      <div class="pdf-footer-inner">
+        <div class="footer-brand">Areca</div>
+        <div class="footer-tagline">THE CULINARY DESTINATION</div>
+        <p class="footer-contact">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i> 
+          <a href="tel:9737982028">97379 82028</a>
+        </p>
+        <p class="footer-loc"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Areca, La Flora, Ville Flora</p>
+        <div class="footer-decor-line"></div>
+        <p class="footer-thanks">Thank you for dining with us</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- MODAL: Restaurant Timings & Please Note (Page 16 of PDF) -->
+  <div class="modal-backdrop" id="infoModal" hidden>
+    <div class="modal-dialog" role="dialog" aria-labelledby="infoTitle" aria-modal="true">
+      <div class="modal-header">
+        <h2 id="infoTitle" class="modal-script-title">Restaurant Timings</h2>
+        <button class="modal-close" id="closeInfoBtn" aria-label="Close" type="button">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="timings-list">
+          <div class="timing-row">
+            <span class="timing-meal">Breakfast:</span>
+            <span class="timing-val">7:00 AM – 10:30 AM</span>
+          </div>
+          <div class="timing-row">
+            <span class="timing-meal">Lunch:</span>
+            <span class="timing-val">12:00 PM – 3:30 PM</span>
+          </div>
+          <div class="timing-row">
+            <span class="timing-meal">Dinner:</span>
+            <span class="timing-val">7:00 PM – 11:00 PM</span>
+          </div>
+          <div class="timing-row">
+            <span class="timing-meal">Round The Clock:</span>
+            <span class="timing-val">4:30 PM to 6:30 PM</span>
+          </div>
+        </div>
+
+        <div class="notes-heading">PLEASE NOTE</div>
+        <ul class="pdf-notes-list">
+          <li>Timings may vary on special occasions and holidays.</li>
+          <li>Last order will be accepted 30 minutes before closing.</li>
+          <li>Please inform our team about any food allergies or dietary requirements before ordering.</li>
+          <li>Jain / special dietary preparations are available on request, subject to availability.</li>
+          <li>Prices are inclusive/exclusive of applicable taxes mention whichever applies.</li>
+          <li>Outside food and beverages are not permitted.</li>
+        </ul>
+
+        <div class="notes-heading">RESERVATIONS &amp; ENQUIRIES</div>
+        <p class="reservations-text">For reservations, celebrations or special requests, please contact our restaurant team.</p>
+        <p class="contact-highlight"><a href="tel:9737982028"><i class="fa-solid fa-phone"></i> 97379 82028</a></p>
+        <p class="location-text">Areca, La Flora, Ville Flora</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Clean PDF-Matching QR Stand (Printable for Table / Reception) -->
+  <div class="modal-backdrop" id="qrModal" hidden>
+    <div class="modal-dialog qr-modal-dialog" role="dialog" aria-labelledby="qrTitle" aria-modal="true">
+      <div class="modal-header">
+        <h2 id="qrTitle" class="modal-script-title">Digital Menu QR Stand</h2>
+        <button class="modal-close" id="closeQrBtn" aria-label="Close" type="button">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body qr-modal-layout">
+        <!-- Stand Preview matching PDF design -->
+        <div class="printable-stand" id="printableStand">
+          <div class="stand-border-box">
+            <div class="stand-script-logo">Areca</div>
+            <div class="stand-sub">THE CULINARY DESTINATION</div>
+            <div class="stand-by">BY LA-FLORA</div>
+            <div class="stand-sep"></div>
+            
+            <div class="stand-qr-wrapper">
+              <div id="qrCanvas"></div>
+            </div>
+            
+            <div class="stand-instructions">Scan with phone camera to view menu</div>
+            <div class="stand-sep"></div>
+            
+            <div class="stand-contact-info">
+              <span class="stand-location">Areca, La Flora, Ville Flora</span>
+              <span class="stand-phone">Enquiries: 97379 82028</span>
+            </div>
+
+            <div class="stand-thanks">Thank you for dining with us</div>
+          </div>
+        </div>
+
+        <div class="qr-print-actions">
+          <p class="print-help">Place this stand on dining tables. Customers simply point their phone camera to browse the menu.</p>
+          <button class="btn-print-primary" id="printStandBtn" type="button">
+            <i class="fa-solid fa-print"></i> Print / Save as PDF (1 Page)
+          </button>
+          <button class="btn-download-stand" id="downloadStandImgBtn" type="button">
+            <i class="fa-solid fa-file-arrow-down"></i> Download Stand Image (HD)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="qrcode.min.js"></script>
+  <script src="menu-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

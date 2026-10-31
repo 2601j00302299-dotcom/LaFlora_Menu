@@ -1,0 +1,1032 @@
+/* ==========================================================================
+   ARECA - THE CULINARY DESTINATION (by La-Flora)
+   Theme: Exact Match to Physical PDF Menu
+   Palette: Warm Cream Linen, Gold Ochre & Charcoal Typography
+   Mobile-First & Ultra-Responsive (iOS, Android, Tablet, Desktop)
+   ========================================================================== */
+
+:root {
+  /* PDF Authentic Color Palette */
+  --pdf-bg: #F5F2EB;
+  --pdf-bg-light: #FAF8F2;
+  --pdf-bg-card: #FFFFFF;
+  --pdf-gold: #9F7B3F;
+  --pdf-gold-light: #BFA065;
+  --pdf-gold-dark: #7A5B27;
+  --pdf-gold-subtle: rgba(159, 123, 63, 0.18);
+  --pdf-gold-border: rgba(159, 123, 63, 0.35);
+
+  --pdf-charcoal: #2C2A26;
+  --pdf-body-text: #524F47;
+  --pdf-muted-text: #7A766D;
+  --pdf-line: #D8D2C3;
+
+  --font-script: 'Caveat', 'Alex Brush', cursive;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --header-height: 125px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-full: 9999px;
+  --transition: all 0.2s ease-out;
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--pdf-bg);
+  color: var(--pdf-body-text);
+  line-height: 1.5;
+  min-height: 100vh;
+  padding-bottom: 40px;
+  background-image: radial-gradient(rgba(159, 123, 63, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--pdf-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--pdf-gold-light);
+  border-radius: var(--radius-full);
+}
+
+/* ==========================================================================
+   APP HEADER (STICKY, MOBILE FIRST)
+   ========================================================================== */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(245, 242, 235, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--pdf-gold-border);
+  box-shadow: 0 2px 12px rgba(100, 85, 60, 0.06);
+}
+
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px 16px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-script);
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--pdf-charcoal);
+  line-height: 0.95;
+  letter-spacing: 0.5px;
+}
+
+.brand-sub {
+  font-size: 0.62rem;
+  letter-spacing: 1.5px;
+  color: var(--pdf-gold);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.brand-by {
+  font-style: italic;
+  font-family: var(--font-serif);
+  text-transform: none;
+  font-size: 0.72rem;
+  color: var(--pdf-muted-text);
+  margin-left: 2px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-btn {
+  background: var(--pdf-bg-light);
+  border: 1px solid var(--pdf-gold-border);
+  color: var(--pdf-gold-dark);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+  font-family: var(--font-sans);
+}
+
+.header-btn:hover, .header-btn:active {
+  background: var(--pdf-gold);
+  color: #FFFFFF;
+  border-color: var(--pdf-gold);
+}
+
+.qr-btn {
+  background: rgba(159, 123, 63, 0.12);
+  color: var(--pdf-gold-dark);
+  border-color: var(--pdf-gold);
+}
+
+/* ==========================================================================
+   SEARCH BAR
+   ========================================================================== */
+.search-bar-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px 8px;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--pdf-gold);
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+
+.search-box input {
+  width: 100%;
+  background: var(--pdf-bg-card);
+  border: 1px solid var(--pdf-gold-border);
+  border-radius: var(--radius-full);
+  padding: 8px 36px 8px 34px;
+  font-size: 0.84rem;
+  color: var(--pdf-charcoal);
+  font-family: var(--font-sans);
+  outline: none;
+  transition: var(--transition);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.search-box input:focus {
+  border-color: var(--pdf-gold);
+  box-shadow: 0 0 0 3px rgba(159, 123, 63, 0.15);
+  background: #FFFFFF;
+}
+
+.search-box input::placeholder {
+  color: var(--pdf-muted-text);
+  font-size: 0.82rem;
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--pdf-muted-text);
+  cursor: pointer;
+  padding: 4px;
+  display: none;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   CATEGORY NAVIGATION SCROLL (MATCHING PDF SECTIONS)
+   ========================================================================== */
+.category-nav {
+  border-top: 1px solid rgba(159, 123, 63, 0.12);
+  background: rgba(245, 242, 235, 0.8);
+}
+
+.category-nav-scroll {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.category-nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.cat-nav-link {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--pdf-charcoal);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.74rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--transition);
+  font-family: var(--font-sans);
+}
+
+.cat-nav-link:hover {
+  color: var(--pdf-gold);
+  background: rgba(159, 123, 63, 0.08);
+}
+
+.cat-nav-link.active {
+  background: var(--pdf-gold);
+  color: #FFFFFF;
+  border-color: var(--pdf-gold);
+}
+
+/* ==========================================================================
+   MAIN MENU CANVAS (MATCHING PDF PAGES)
+   ========================================================================== */
+.menu-canvas {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 16px 16px 60px;
+}
+
+/* PDF Cover Flourish */
+.cover-hero {
+  text-align: center;
+  padding: 14px 16px 18px;
+  margin-bottom: 24px;
+}
+
+.cutlery-icon {
+  font-size: 1.1rem;
+  color: var(--pdf-gold);
+  margin-bottom: 4px;
+}
+
+.cover-title-script {
+  font-family: var(--font-script);
+  font-size: 4rem;
+  line-height: 0.9;
+  color: var(--pdf-charcoal);
+  margin-bottom: 4px;
+}
+
+.cover-tagline {
+  font-size: 0.76rem;
+  letter-spacing: 3px;
+  color: var(--pdf-gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.cover-by {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--pdf-muted-text);
+  font-weight: 500;
+}
+
+.cover-subtitle {
+  font-size: 0.62rem;
+  letter-spacing: 2.5px;
+  color: var(--pdf-gold-dark);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.gold-thin-divider {
+  width: 140px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--pdf-gold), transparent);
+  margin: 14px auto 0;
+}
+
+/* Search Feedback & Empty State */
+.search-feedback {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--pdf-bg-card);
+  border: 1px solid var(--pdf-gold-border);
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  font-size: 0.82rem;
+  color: var(--pdf-charcoal);
+}
+
+.clear-filter-link {
+  background: none;
+  border: none;
+  color: var(--pdf-gold);
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 50px 20px;
+  background: var(--pdf-bg-card);
+  border: 1px dashed var(--pdf-gold-border);
+  border-radius: var(--radius-md);
+  margin: 20px 0;
+}
+
+.empty-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--pdf-charcoal);
+  margin-bottom: 6px;
+}
+
+.empty-desc {
+  font-size: 0.85rem;
+  color: var(--pdf-muted-text);
+  margin-bottom: 14px;
+}
+
+.btn-menu {
+  background: var(--pdf-gold);
+  color: #FFFFFF;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   MENU SECTIONS (MIRRORING PDF LAYOUT)
+   ========================================================================== */
+.menu-section-block {
+  background: var(--pdf-bg-card);
+  border: 1px solid var(--pdf-line);
+  border-radius: var(--radius-md);
+  padding: 26px 22px 28px;
+  margin-bottom: 26px;
+  box-shadow: 0 2px 10px rgba(100, 85, 60, 0.04);
+  position: relative;
+  scroll-margin-top: 140px;
+}
+
+/* Header matching the PDF's script + timing */
+.section-header-wrap {
+  text-align: center;
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--pdf-gold-subtle);
+  position: relative;
+}
+
+.section-script-title {
+  font-family: var(--font-script);
+  font-size: 3rem;
+  color: var(--pdf-charcoal);
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.section-timing {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--pdf-gold);
+  font-weight: 600;
+  white-space: pre-line;
+  text-transform: uppercase;
+}
+
+/* Left accent bar matching the PDF's vertical line */
+.section-content-layout {
+  position: relative;
+  padding-left: 20px;
+}
+
+.section-content-layout::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--pdf-gold-light), var(--pdf-gold), var(--pdf-gold-light));
+  border-radius: 2px;
+}
+
+/* Dishes List */
+.dishes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Single Dish Item Layout (Matching PDF Typography) */
+.dish-item {
+  padding-bottom: 14px;
+  border-bottom: 1px dashed rgba(216, 210, 195, 0.6);
+  transition: var(--transition);
+}
+
+.dish-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.dish-header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 3px;
+}
+
+.dish-title {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--pdf-gold);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1.35;
+}
+
+.dish-price {
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--pdf-gold);
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+.dish-description {
+  font-size: 0.83rem;
+  color: var(--pdf-body-text);
+  line-height: 1.45;
+  white-space: pre-line;
+}
+
+/* ==========================================================================
+   FOOTER (MATCHING PDF BACK COVER)
+   ========================================================================== */
+.pdf-footer {
+  text-align: center;
+  padding: 34px 16px 14px;
+  margin-top: 20px;
+  border-top: 1px solid var(--pdf-gold-border);
+}
+
+.pdf-footer-inner {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  font-family: var(--font-script);
+  font-size: 3rem;
+  line-height: 0.9;
+  color: var(--pdf-charcoal);
+  margin-bottom: 2px;
+}
+
+.footer-tagline {
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  color: var(--pdf-gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.footer-contact a {
+  color: var(--pdf-gold-dark);
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.footer-loc {
+  font-size: 0.8rem;
+  color: var(--pdf-muted-text);
+  margin-top: 4px;
+}
+
+.footer-decor-line {
+  width: 80px;
+  height: 1px;
+  background: var(--pdf-gold);
+  margin: 14px auto 10px;
+}
+
+.footer-thanks {
+  font-family: var(--font-script);
+  font-size: 1.8rem;
+  color: var(--pdf-charcoal);
+}
+
+/* ==========================================================================
+   MODAL WINDOWS (TIMINGS & QR CODE)
+   ========================================================================== */
+.modal-backdrop[hidden] {
+  display: none !important;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(44, 42, 38, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: modalFade 0.2s ease-out;
+}
+
+@keyframes modalFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-dialog {
+  background: var(--pdf-bg);
+  border: 1px solid var(--pdf-gold);
+  border-radius: var(--radius-md);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--pdf-gold-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--pdf-bg-light);
+}
+
+.modal-script-title {
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  color: var(--pdf-charcoal);
+  line-height: 1;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--pdf-muted-text);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.modal-close:hover {
+  color: var(--pdf-charcoal);
+}
+
+.modal-body {
+  padding: 18px 20px;
+  overflow-y: auto;
+  font-size: 0.88rem;
+}
+
+/* Timings List */
+.timings-list {
+  background: #FFFFFF;
+  border: 1px solid var(--pdf-line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+
+.timing-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px dashed rgba(216, 210, 195, 0.5);
+  font-size: 0.85rem;
+}
+
+.timing-row:last-child {
+  border-bottom: none;
+}
+
+.timing-meal {
+  font-weight: 600;
+  color: var(--pdf-charcoal);
+}
+
+.timing-val {
+  color: var(--pdf-gold-dark);
+  font-weight: 600;
+}
+
+.notes-heading {
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: var(--pdf-gold);
+  margin: 14px 0 6px;
+  text-transform: uppercase;
+}
+
+.pdf-notes-list {
+  padding-left: 18px;
+  color: var(--pdf-body-text);
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.reservations-text {
+  font-size: 0.82rem;
+  color: var(--pdf-body-text);
+  margin-bottom: 6px;
+}
+
+.contact-highlight {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.contact-highlight a {
+  color: var(--pdf-gold-dark);
+  text-decoration: none;
+}
+
+.location-text {
+  font-size: 0.8rem;
+  color: var(--pdf-muted-text);
+}
+
+/* ==========================================================================
+   QR STAND PREVIEW (PRINTABLE FOR TABLES)
+   ========================================================================== */
+.qr-modal-dialog {
+  max-width: 440px;
+}
+
+.qr-modal-layout {
+  text-align: center;
+}
+
+.printable-stand {
+  background: #FAF8F2;
+  border: 3px double var(--pdf-gold);
+  padding: 14px;
+  border-radius: 8px;
+  margin: 0 auto 16px;
+  max-width: 320px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.stand-border-box {
+  border: 1.5px solid var(--pdf-gold);
+  padding: 16px 14px;
+  border-radius: 4px;
+}
+
+.stand-script-logo {
+  font-family: var(--font-script);
+  font-size: 3.2rem;
+  line-height: 0.95;
+  color: #1A1816;
+  font-weight: 700;
+}
+
+.stand-sub {
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  color: #7A551E;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.stand-by {
+  font-size: 0.70rem;
+  letter-spacing: 1.5px;
+  color: #3E3A33;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.stand-sep {
+  height: 1.5px;
+  background: var(--pdf-gold);
+  margin: 12px auto;
+  width: 85%;
+  opacity: 0.85;
+}
+
+.stand-qr-wrapper {
+  background: #FFFFFF;
+  padding: 12px;
+  display: inline-block;
+  border: 1.5px solid var(--pdf-gold);
+  border-radius: 6px;
+  margin: 4px 0 8px;
+}
+
+.stand-qr-wrapper img, .stand-qr-wrapper canvas {
+  display: block;
+  max-width: 155px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.stand-instructions {
+  font-size: 0.86rem;
+  color: #1A1816;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+.stand-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 6px 0;
+}
+
+.stand-location {
+  font-size: 0.80rem;
+  color: #2C2A26;
+  font-weight: 600;
+}
+
+.stand-phone {
+  font-size: 0.92rem;
+  color: #7A551E;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.stand-thanks {
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1A1816;
+  line-height: 1.1;
+  margin-top: 10px;
+}
+
+.qr-print-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.print-help {
+  font-size: 0.80rem;
+  color: var(--pdf-muted-text);
+  margin-bottom: 2px;
+}
+
+.btn-print-primary {
+  background: var(--pdf-gold);
+  color: #FFFFFF;
+  border: 1px solid var(--pdf-gold-dark);
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  box-shadow: 0 4px 12px rgba(159, 123, 63, 0.25);
+  transition: var(--transition);
+}
+
+.btn-print-primary:hover {
+  background: var(--pdf-gold-dark);
+  transform: translateY(-1px);
+}
+
+.btn-download-stand {
+  background: #FFFFFF;
+  color: #2C2A26;
+  border: 1.5px solid var(--pdf-gold);
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  transition: var(--transition);
+}
+
+.btn-download-stand:hover {
+  background: var(--pdf-bg);
+}
+
+/* ==========================================================================
+   PRINT MEDIA STYLESHEET (STRICTLY 1 SINGLE PAGE ONLY)
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 15mm auto;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Completely remove menu canvas, header, and extra elements from layout flow */
+  .app-header,
+  .menu-canvas,
+  .modal-backdrop:not(#qrModal),
+  .modal-header,
+  .qr-print-actions,
+  .print-help {
+    display: none !important;
+  }
+
+  /* Force only the QR modal stand into view */
+  #qrModal, #qrModal[hidden] {
+    display: block !important;
+    position: static !important;
+    inset: auto !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .modal-dialog {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .modal-body {
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  #printableStand {
+    margin: 20mm auto 0 !important;
+    max-width: 340px !important;
+    box-shadow: none !important;
+    border: 3px double #9F7B3F !important;
+    background: #FAF8F2 !important;
+    page-break-inside: avoid !important;
+    page-break-after: avoid !important;
+    page-break-before: avoid !important;
+    break-inside: avoid !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .stand-border-box {
+    border: 1.5px solid #9F7B3F !important;
+  }
+
+  .stand-script-logo {
+    color: #1A1816 !important;
+    font-size: 3.2rem !important;
+    font-family: 'Caveat', 'Alex Brush', cursive !important;
+  }
+
+  .stand-sub {
+    color: #7A551E !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+  }
+
+  .stand-by {
+    color: #3E3A33 !important;
+    font-size: 0.70rem !important;
+    font-weight: 600 !important;
+  }
+
+  .stand-sep {
+    background: #9F7B3F !important;
+  }
+
+  .stand-instructions {
+    color: #1A1816 !important;
+    font-size: 0.86rem !important;
+    font-weight: 700 !important;
+  }
+
+  .stand-location {
+    color: #2C2A26 !important;
+    font-size: 0.80rem !important;
+    font-weight: 600 !important;
+  }
+
+  .stand-phone {
+    color: #7A551E !important;
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+  }
+
+  .stand-thanks {
+    color: #1A1816 !important;
+    font-size: 2.2rem !important;
+    font-family: 'Caveat', 'Alex Brush', cursive !important;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (IPHONE, ANDROID, IPAD, TABLET)
+   ========================================================================== */
+@media (max-width: 600px) {
+  .brand-title {
+    font-size: 2rem;
+  }
+  .brand-sub {
+    font-size: 0.58rem;
+    letter-spacing: 1px;
+  }
+  .cover-title-script {
+    font-size: 3.2rem;
+  }
+  .section-script-title {
+    font-size: 2.4rem;
+  }
+  .menu-section-block {
+    padding: 18px 14px 20px;
+  }
+  .section-content-layout {
+    padding-left: 14px;
+  }
+  .dish-title {
+    font-size: 0.88rem;
+  }
+  .dish-price {
+    font-size: 0.9rem;
+  }
+  .dish-description {
+    font-size: 0.78rem;
+  }
+}
