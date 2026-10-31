@@ -260,12 +260,28 @@
           <p>No dishes shortlisted yet.</p>
           <span>Tap <strong>+</strong> next to any dish to add it to your selection.</span>
         </div>
+
+        <!-- Authentic PDF Dining Notes (Taxes, Orders, Cancellation, Allergies) -->
+        <div class="selection-policy-box" id="selectionPolicyBox">
+          <div class="selection-policy-title">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>IMPORTANT DINING NOTES</span>
+          </div>
+          <ul class="selection-policy-list">
+            <li><strong>Taxes:</strong> Prices are exclusive of applicable government taxes.</li>
+            <li><strong>Preparation &amp; Cancellation:</strong> Dishes are freshly prepared to order. Orders cannot be cancelled once preparation begins in the kitchen.</li>
+            <li><strong>Last Order:</strong> Accepted 30 minutes before restaurant closing time.</li>
+            <li><strong>Allergies &amp; Jain:</strong> Please inform your server about any food allergies or Jain preparation requirements before placing the order.</li>
+            <li><strong>Outside Food:</strong> Outside food and beverages are strictly not permitted.</li>
+          </ul>
+        </div>
       </div>
 
       <div class="modal-footer selection-modal-footer" id="selectionModalFooter">
         <div class="selection-footer-total">
           <span class="footer-total-label">Estimated Total:</span>
           <span class="footer-total-val" id="selectionFooterTotal">₹0</span>
+          <span class="footer-tax-note">*Govt. taxes applicable extra</span>
         </div>
         <div class="selection-footer-actions">
           <button class="btn-clear-selection" id="clearSelectionBtn" type="button">
