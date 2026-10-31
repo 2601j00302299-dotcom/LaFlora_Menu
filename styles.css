@@ -129,6 +129,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .header-btn {
@@ -145,6 +146,9 @@ body {
   gap: 6px;
   transition: var(--transition);
   font-family: var(--font-sans);
+  white-space: nowrap;
+  flex-shrink: 0;
+  height: 34px;
 }
 
 .header-btn:hover, .header-btn:active {
@@ -1402,12 +1406,47 @@ body {
    RESPONSIVE DESIGN (IPHONE, ANDROID, IPAD, TABLET)
    ========================================================================== */
 @media (max-width: 600px) {
+  .header-inner {
+    padding: 8px 12px 6px;
+    gap: 8px;
+  }
+
   .brand-title {
     font-size: 2rem;
   }
+
   .brand-sub {
-    font-size: 0.58rem;
-    letter-spacing: 1px;
+    font-size: 0.54rem;
+    letter-spacing: 0.8px;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  /* Compact luxury icon-buttons on mobile to prevent squishing and multi-line wrapping */
+  .header-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .header-btn span:not(.header-badge) {
+    display: none;
+  }
+
+  .header-btn i {
+    font-size: 0.92rem;
+  }
+
+  .header-badge {
+    top: -3px;
+    right: -3px;
+    min-width: 16px;
+    height: 16px;
+    font-size: 0.62rem;
   }
   .cover-title-script {
     font-size: 3.2rem;
