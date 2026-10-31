@@ -7,8 +7,6 @@
 (function () {
   'use strict';
 
-  const SELECTION_STORAGE_KEY = 'areca_my_selection';
-
   const state = {
     searchQuery: '',
     activeSectionId: 'breakfast-menu',
