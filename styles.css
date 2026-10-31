@@ -466,10 +466,10 @@ body {
 
 .dish-header-row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 
 .dish-title {
@@ -480,6 +480,14 @@ body {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   line-height: 1.35;
+  flex: 1;
+}
+
+.dish-price-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .dish-price {
@@ -491,11 +499,375 @@ body {
   letter-spacing: 0.5px;
 }
 
+/* My Selection Action Button & Counter on dish cards */
+.btn-add-select {
+  background: #FFFFFF;
+  border: 1px solid var(--pdf-gold);
+  color: var(--pdf-gold-dark);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: var(--transition);
+  box-shadow: 0 1px 3px rgba(159, 123, 63, 0.15);
+}
+
+.btn-add-select:hover {
+  background: var(--pdf-gold);
+  color: #FFFFFF;
+}
+
+.dish-qty-control {
+  display: inline-flex;
+  align-items: center;
+  background: #FAF8F2;
+  border: 1px solid var(--pdf-gold);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(159, 123, 63, 0.15);
+}
+
+.dish-qty-control button {
+  background: transparent;
+  border: none;
+  color: var(--pdf-gold-dark);
+  width: 24px;
+  height: 26px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.dish-qty-control button:hover {
+  background: var(--pdf-gold);
+  color: #FFFFFF;
+}
+
+.dish-qty-control .qty-num {
+  min-width: 18px;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--pdf-charcoal);
+}
+
 .dish-description {
   font-size: 0.83rem;
   color: var(--pdf-body-text);
   line-height: 1.45;
   white-space: pre-line;
+}
+
+/* Header badge count for selection */
+.header-btn {
+  position: relative;
+}
+
+.header-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--pdf-gold);
+  color: #FFFFFF;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 999px;
+  min-width: 17px;
+  height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border: 1.5px solid #FFFFFF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.header-badge[hidden] {
+  display: none !important;
+}
+
+/* ==========================================================================
+   FLOATING "MY SELECTION" BOTTOM BAR
+   ========================================================================== */
+.selection-floating-bar[hidden] {
+  display: none !important;
+}
+
+.selection-floating-bar {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 28px);
+  max-width: 480px;
+  z-index: 95;
+  background: var(--pdf-charcoal);
+  color: #FFFFFF;
+  border-radius: var(--radius-full);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  border: 1.5px solid var(--pdf-gold);
+  padding: 8px 10px 8px 16px;
+  animation: slideUpFloat 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpFloat {
+  from { transform: translate(-50%, 40px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+.selection-bar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.selection-bar-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+}
+
+.selection-badge {
+  background: var(--pdf-gold);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.selection-title-text {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.selection-dot {
+  color: var(--pdf-gold-light);
+  opacity: 0.6;
+}
+
+.selection-total {
+  font-weight: 700;
+  color: var(--pdf-gold-light);
+  font-size: 0.95rem;
+}
+
+.selection-view-btn {
+  background: var(--pdf-gold);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 8px 16px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+
+.selection-view-btn:hover {
+  background: var(--pdf-gold-dark);
+}
+
+/* ==========================================================================
+   MY SELECTION MODAL
+   ========================================================================== */
+.selection-modal-dialog {
+  max-width: 500px;
+}
+
+.selection-helper-banner {
+  background: var(--pdf-bg-light);
+  border: 1px solid var(--pdf-gold-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: var(--pdf-gold-dark);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.selection-helper-banner i {
+  font-size: 1.15rem;
+  color: var(--pdf-gold);
+  flex-shrink: 0;
+}
+
+.selection-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 48vh;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.selection-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  background: #FFFFFF;
+  border: 1px solid var(--pdf-line);
+  border-radius: var(--radius-sm);
+}
+
+.selection-item-info {
+  flex: 1;
+}
+
+.selection-item-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--pdf-charcoal);
+  text-transform: uppercase;
+}
+
+.selection-item-rate {
+  font-size: 0.76rem;
+  color: var(--pdf-muted-text);
+  margin-top: 1px;
+}
+
+.selection-item-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.selection-item-total {
+  font-size: 0.90rem;
+  font-weight: 700;
+  color: var(--pdf-gold-dark);
+  min-width: 55px;
+  text-align: right;
+}
+
+.selection-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-remove-item {
+  background: none;
+  border: none;
+  color: #A39E93;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 4px;
+  transition: var(--transition);
+}
+
+.btn-remove-item:hover {
+  color: #C0392B;
+}
+
+.selection-empty-notice {
+  text-align: center;
+  padding: 34px 16px;
+  color: var(--pdf-muted-text);
+}
+
+.selection-empty-notice .empty-icon {
+  font-size: 2.2rem;
+  color: var(--pdf-gold-light);
+  margin-bottom: 8px;
+  opacity: 0.8;
+}
+
+.selection-empty-notice p {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--pdf-charcoal);
+  margin-bottom: 4px;
+}
+
+.selection-empty-notice span {
+  font-size: 0.82rem;
+}
+
+.selection-modal-footer {
+  padding: 12px 18px;
+  border-top: 1px solid var(--pdf-gold-border);
+  background: var(--pdf-bg-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.selection-footer-total {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-total-label {
+  font-size: 0.70rem;
+  color: var(--pdf-muted-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-total-val {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--pdf-gold-dark);
+}
+
+.selection-footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-clear-selection {
+  background: transparent;
+  border: 1px solid var(--pdf-gold-border);
+  color: var(--pdf-muted-text);
+  padding: 8px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-clear-selection:hover {
+  color: #C0392B;
+  border-color: #C0392B;
+}
+
+.btn-continue-browsing {
+  background: var(--pdf-gold);
+  color: #FFFFFF;
+  border: 1px solid var(--pdf-gold-dark);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-continue-browsing:hover {
+  background: var(--pdf-gold-dark);
 }
 
 /* ==========================================================================
@@ -897,7 +1269,8 @@ body {
   .modal-backdrop:not(#qrModal),
   .modal-header,
   .qr-print-actions,
-  .print-help {
+  .print-help,
+  .selection-floating-bar {
     display: none !important;
   }
 

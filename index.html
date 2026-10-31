@@ -39,6 +39,13 @@
           <i class="fa-solid fa-qrcode" aria-hidden="true"></i>
           <span>QR Code</span>
         </button>
+
+        <!-- My Selection Dine-in Shortlist -->
+        <button class="header-btn selection-btn" id="headerSelectionBtn" title="My Selection" aria-label="View my selected dishes" type="button">
+          <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+          <span>Selection</span>
+          <span class="header-badge" id="headerSelectionBadge" hidden>0</span>
+        </button>
       </div>
     </div>
 
@@ -206,6 +213,66 @@
           </button>
           <button class="btn-download-stand" id="downloadStandImgBtn" type="button">
             <i class="fa-solid fa-file-arrow-down"></i> Download Stand Image (HD)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating "My Selection" Bottom Bar -->
+  <aside class="selection-floating-bar" id="selectionFloatingBar" hidden aria-label="My Selection Summary">
+    <div class="selection-bar-content">
+      <div class="selection-bar-info">
+        <span class="selection-badge" id="selectionBadge">0</span>
+        <span class="selection-title-text">My Selection</span>
+        <span class="selection-dot">•</span>
+        <span class="selection-total" id="selectionTotal">₹0</span>
+      </div>
+      <button class="selection-view-btn" id="openSelectionBtn" type="button">
+        <span>View List</span>
+        <i class="fa-solid fa-chevron-up"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- MODAL: My Selection (Dine-In Shortlist) -->
+  <div class="modal-backdrop" id="selectionModal" hidden>
+    <div class="modal-dialog selection-modal-dialog" role="dialog" aria-labelledby="selectionTitle" aria-modal="true">
+      <div class="modal-header">
+        <h2 id="selectionTitle" class="modal-script-title">My Selection</h2>
+        <button class="modal-close" id="closeSelectionBtn" aria-label="Close" type="button">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body selection-modal-body">
+        <div class="selection-helper-banner">
+          <i class="fa-solid fa-bell-concierge"></i>
+          <span>Show this shortlist to your waiter when placing your order at the table.</span>
+        </div>
+
+        <div class="selection-items-list" id="selectionItemsList">
+          <!-- Dynamically populated from JavaScript -->
+        </div>
+
+        <div class="selection-empty-notice" id="selectionEmptyNotice" hidden>
+          <div class="empty-icon"><i class="fa-regular fa-bookmark"></i></div>
+          <p>No dishes shortlisted yet.</p>
+          <span>Tap <strong>+</strong> next to any dish to add it to your selection.</span>
+        </div>
+      </div>
+
+      <div class="modal-footer selection-modal-footer" id="selectionModalFooter">
+        <div class="selection-footer-total">
+          <span class="footer-total-label">Estimated Total:</span>
+          <span class="footer-total-val" id="selectionFooterTotal">₹0</span>
+        </div>
+        <div class="selection-footer-actions">
+          <button class="btn-clear-selection" id="clearSelectionBtn" type="button">
+            <i class="fa-solid fa-trash-can"></i> Clear
+          </button>
+          <button class="btn-continue-browsing" id="closeSelectionFooterBtn" type="button">
+            Back to Menu
           </button>
         </div>
       </div>
