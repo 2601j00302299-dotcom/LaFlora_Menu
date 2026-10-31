@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>La Flora Club | Timeless Memories • Ville Flora</title>
+  <meta name="description" content="Discover La Flora Club at Ville Flora. An exclusive sanctuary of luxury stays, sprawling celebration lawns, recreation, and exquisite dining at Areca - The Culinary Destination.">
+  <meta name="theme-color" content="#193327">
+
+  <!-- Editorial Typography: Playfair Display + Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="top-bar" aria-label="Quick Contact Information">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-info-item">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          <span>Ville Flora, La Flora Club</span>
+        </span>
+        <span class="top-bar-sep">•</span>
+        <span class="top-info-item">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <a href="tel:9737982028">+91 97379 82028</a>
+        </span>
+        <span class="top-bar-sep">•</span>
+        <span class="top-info-item">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <a href="mailto:info@lafloraclub.com">info@lafloraclub.com</a>
+        </span>
+      </div>
+
+      <div class="top-bar-right">
+        <a href="https://menu.lafloraclub.com" target="_blank" rel="noopener" class="top-menu-link">
+          <i class="fa-solid fa-utensils" aria-hidden="true"></i>
+          <span>Areca Digital Menu</span>
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sticky Luxury Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <!-- Brand Logo -->
+      <a href="#hero" class="brand-link" aria-label="La Flora Club Homepage">
+        <div class="brand-emblem">
+          <span class="emblem-char">LF</span>
+        </div>
+        <div class="brand-names">
+          <span class="brand-title">LA FLORA CLUB</span>
+          <span class="brand-sub">TIMELESS MEMORIES • VILLE FLORA</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link">The Club</a></li>
+          <li><a href="#experiences" class="nav-link">Experiences</a></li>
+          <li><a href="#dining" class="nav-link">Dining (Areca)</a></li>
+          <li><a href="#celebrations" class="nav-link">Banquets &amp; Lawns</a></li>
+          <li><a href="#stays" class="nav-link">Stays</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <a href="https://menu.lafloraclub.com" target="_blank" rel="noopener" class="btn-menu-pill" title="View Areca Restaurant Menu">
+          <i class="fa-solid fa-book-open"></i>
+          <span>Areca Menu</span>
+        </a>
+        <button class="btn-primary-pill" id="openInquiryModalBtn" type="button">
+          <span>Inquire &amp; Reserve</span>
+        </button>
+        <button class="hamburger-btn" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" hidden>
+      <div class="mobile-drawer-content">
+        <ul class="mobile-nav-list">
+          <li><a href="#about" class="mobile-nav-link">The Club</a></li>
+          <li><a href="#experiences" class="mobile-nav-link">Experiences</a></li>
+          <li><a href="#dining" class="mobile-nav-link">Areca Dining</a></li>
+          <li><a href="#celebrations" class="mobile-nav-link">Banquets &amp; Lawns</a></li>
+          <li><a href="#stays" class="mobile-nav-link">Resort Stays</a></li>
+          <li><a href="#contact" class="mobile-nav-link">Contact &amp; Location</a></li>
+        </ul>
+        <div class="mobile-drawer-cta">
+          <a href="https://menu.lafloraclub.com" target="_blank" rel="noopener" class="btn-drawer-menu">
+            <i class="fa-solid fa-utensils"></i> View Areca Menu
+          </a>
+          <a href="tel:9737982028" class="btn-drawer-phone">
+            <i class="fa-solid fa-phone"></i> +91 97379 82028
+          </a>
+          <a href="mailto:info@lafloraclub.com" class="btn-drawer-email">
+            <i class="fa-solid fa-envelope"></i> info@lafloraclub.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION: Editorial Luxury with Real Architecture Photography -->
+    <section class="hero-section" id="hero">
+      <div class="hero-image-wrap">
+        <img 
+          src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80" 
+          alt="La Flora Club resort exterior and pool at Ville Flora" 
+          class="hero-bg-img"
+          loading="eager"
+        >
+        <div class="hero-scrim"></div>
+      </div>
+
+      <div class="container hero-container">
+        <div class="hero-editorial-card">
+          <span class="hero-kicker">VILLE FLORA • PRIVATE RESORT &amp; CLUB</span>
+          <h1 class="hero-headline">
+            Where Tranquility Meets <em>Timeless Memories</em>
+          </h1>
+          <p class="hero-description">
+            Escape into an expansive sanctuary of lush gardens, boutique stays, grand celebration lawns, and gastronomical excellence at <strong>Areca</strong>.
+          </p>
+
+          <div class="hero-btn-row">
+            <a href="https://menu.lafloraclub.com" target="_blank" rel="noopener" class="btn-solid-dark">
+              <i class="fa-solid fa-utensils"></i>
+              <span>View Areca Digital Menu</span>
+            </a>
+            <a href="#experiences" class="btn-outline-light">
+              <span>Explore The Club</span>
+              <i class="fa-solid fa-arrow-down"></i>
+            </a>
+          </div>
+
+          <div class="hero-quick-facts">
+            <div class="fact-col">
+              <span class="fact-title">Location</span>
+              <span class="fact-val">Ville Flora</span>
+            </div>
+            <div class="fact-divider"></div>
+            <div class="fact-col">
+              <span class="fact-title">Dining</span>
+              <span class="fact-val">Areca Destination</span>
+            </div>
+            <div class="fact-divider"></div>
+            <div class="fact-col">
+              <span class="fact-title">Banquets</span>
+              <span class="fact-val">1000+ Guests</span>
+            </div>
+            <div class="fact-divider"></div>
+            <div class="fact-col">
+              <span class="fact-title">Contact</span>
+              <span class="fact-val">97379 82028</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION: Editorial Spread -->
+    <section class="editorial-section" id="about">
+      <div class="container">
+        <div class="editorial-grid">
+          <div class="editorial-text-col">
+            <span class="sub-heading-kicker">OUR ETHOS</span>
+            <h2 class="editorial-heading">An Haven of Calm, Celebration &amp; Grace</h2>
+            <div class="hairline-accent"></div>
+            <p class="lead-text">
+              Conceived in the scenic greenery of <strong>Ville Flora</strong>, La Flora Club was envisioned as a timeless retreat where nature's serenity harmonizes with refined hospitality.
+            </p>
+            <p class="body-text">
+              Whether you are savoring a chef-crafted delicacy at <strong>Areca</strong>, celebrating an unforgettable wedding under starlit canopies, enjoying a weekend staycation in our private cottages, or lounging by the pool, every detail has been thoughtfully orchestrated for comfort and beauty.
+            </p>
+
+            <div class="editorial-feature-list">
+              <div class="feature-item">
+                <span class="feature-num">01</span>
+                <div class="feature-detail">
+                  <h4>Lush Natural Setting</h4>
+                  <p>Wide open avenues, verdant lawns, and fresh country air away from urban clutter.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <span class="feature-num">02</span>
+                <div class="feature-detail">
+                  <h4>Signature Culinary Artistry</h4>
+                  <p>Authentic breakfast to late-night multi-cuisine delicacies at Areca.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <span class="feature-num">03</span>
+                <div class="feature-detail">
+                  <h4>Royal Celebration Spaces</h4>
+                  <p>Magnificent open-air lawns and air-conditioned banquet halls for landmark milestones.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="editorial-visual-col">
+            <div class="visual-frame">
+              <img 
+                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80" 
+                alt="Boutique resort cottage room at La Flora Club" 
+                class="visual-img"
+                loading="lazy"
+              >
+              <div class="visual-caption-card">
+                <span class="caption-tag">VILLE FLORA</span>
+                <p class="caption-quote">"A setting where moments turn into timeless memories."</p>
+                <div class="caption-contact">
+                  <a href="tel:9737982028"><i class="fa-solid fa-phone"></i> 97379 82028</a>
+                  <a href="mailto:info@lafloraclub.com"><i class="fa-solid fa-envelope"></i> info@lafloraclub.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCES SECTION: Magazine Photo Cards -->
+    <section class="experiences-section" id="experiences">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <span class="sub-heading-kicker">DISCOVER OUR SPACES</span>
+            <h2 class="section-main-heading">Curated Experiences at La Flora</h2>
+          </div>
+          <div class="section-header-link">
+            <a href="https://menu.lafloraclub.com" target="_blank" rel="noopener" class="link-arrow">
+              <span>Explore Areca Digital Menu</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="magazine-grid">
+          <!-- Card 1: Dining (Areca) -->
+          <article class="magazine-card">
+            <div class="magazine-card-media">
+              <img 
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" 
+                alt="Areca fine dining restaurant ambiance" 
+                loading="lazy"
+              >
+              <span class="card-pill">Fine Dining</span>
+            </div>
+            <div class="magazine-card-content">
+              <h3 class="card-title">Areca - The Culinary Destination</h3>
+              <p class="card-desc">
+                From morning breakfast &amp; artisanal dosas to tandoori kebabs, rich Punjabi gravies, sizzling platters, and authentic Italian pizzas.
+              </p>
+              <div class="card-details">
+                <span class="detail-badge"><i class="fa-regular fa-clock"></i> 7 AM – 11 PM</span>
+                <span class="detail-badge"><i class="fa-solid fa-seedling"></i> Jain Options</span>
+              </div>
+              <div class="card-action">
+                <a href="https://menu.lafloraclub.com" target="_blank" rel="noopener" class="btn-card-link">
+                  <span>Browse Digital Menu</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Celebrations & Lawns -->
+          <article class="magazine-card" id="celebrations">
+            <div class="magazine-card-media">
+              <img 
+                src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=80" 
+                alt="Grand celebrations lawn and banquet setup at Ville Flora" 
+                loading="lazy"
+              >
+              <span class="card-pill">Banquets &amp; Weddings</span>
+            </div>
+            <div class="magazine-card-content">
+              <h3 class="card-title">Celebration Lawns &amp; Banquets</h3>
+              <p class="card-desc">
+                Bask in the majesty of open starlit lawns hosting up to 1000+ guests. Ideal for weddings, receptions, gala dinners, and corporate annual summits.
+              </p>
+              <div class="card-details">
+                <span class="detail-badge"><i class="fa-solid fa-users"></i> 1000+ Capacity</span>
+                <span class="detail-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Custom Decor</span>
+              </div>
+              <div class="card-action">
+                <button class="btn-card-link trigger-inquiry" data-service="Grand Banquets & Weddings" type="button">
+                  <span>Inquire for Events</span>
+                  <i class="fa-solid fa-calendar-check"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Resort Stays -->
+          <article class="magazine-card" id="stays">
+            <div class="magazine-card-media">
+              <img 
+                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80" 
+                alt="Luxury resort cottage and stay at La Flora Club" 
+                loading="lazy"
+              >
+              <span class="card-pill">Retreat &amp; Stays</span>
+            </div>
+            <div class="magazine-card-content">
+              <h3 class="card-title">Serene Resort Stays</h3>
+              <p class="card-desc">
+                Elegantly styled villas and cottages immersed in botanical garden greenery. Wake up to natural sunlight, gentle breezes, and birdsong.
+              </p>
+              <div class="card-details">
+                <span class="detail-badge"><i class="fa-solid fa-tree"></i> Garden Views</span>
+                <span class="detail-badge"><i class="fa-solid fa-bed"></i> Premium Linen</span>
+              </div>
+              <div class="card-action">
+                <button class="btn-card-link trigger-inquiry" data-service="Resort Stay Booking" type="button">
+                  <span>Reserve a Stay</span>
+                  <i class="fa-solid fa-calendar-check"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Leisure & Pool -->
+          <article class="magazine-card">
+            <div class="magazine-card-media">
+              <img 
+                src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=900&q=80" 
+                alt="Resort swimming pool and recreation at La Flora Club" 
+                loading="lazy"
+              >
+              <span class="card-pill">Recreation</span>
+            </div>
+            <div class="magazine-card-content">
+              <h3 class="card-title">Clubhouse &amp; Poolside</h3>
+              <p class="card-desc">
+                Unwind by the pristine azure swimming pool, enjoy indoor club games, or take leisurely walks across manicured walkways.
+              </p>
+              <div class="card-details">
+                <span class="detail-badge"><i class="fa-solid fa-water-ladder"></i> Resort Pool</span>
+                <span class="detail-badge"><i class="fa-solid fa-table-tennis-paddle-ball"></i> Sports Room</span>
+              </div>
+              <div class="card-action">
+                <button class="btn-card-link trigger-inquiry" data-service="Club Recreation & Day Pass" type="button">
+                  <span>Day Outings &amp; Passes</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARECA DINING SHOWCASE: Split Editorial Feature -->
+    <section class="dining-feature-section" id="dining">
+      <div class="container">
+        <div class="dining-feature-card">
+          <div class="dining-content-side">
+            <span class="sub-heading-kicker">SIGNATURE DINING</span>
+            <h2 class="dining-headline">Areca — The Culinary Destination</h2>
+            <p class="dining-lead">
+              A celebration of regional and global gastronomy by La-Flora. Prepared fresh with supreme ingredients, rich aromas, and authentic techniques.
+            </p>
+
+            <div class="dining-timings-grid">
+              <div class="timing-block">
+                <span class="timing-label">Breakfast</span>
+                <span class="timing-hours">7:00 AM – 10:30 AM</span>
+              </div>
+              <div class="timing-block">
+                <span class="timing-label">Lunch</span>
+                <span class="timing-hours">12:00 PM – 3:30 PM</span>
+              </div>
+              <div class="timing-block">
+                <span class="timing-label">Round The Clock</span>
+                <span class="timing-hours">4:30 PM – 6:30 PM</span>
+              </div>
+              <div class="timing-block">
+                <span class="timing-label">Dinner</span>
+                <span class="timing-hours">7:00 PM – 11:00 PM</span>
+              </div>
+            </div>
+
+            <div class="dining-note-line">
+              <i class="fa-solid fa-circle-info"></i>
+              <span>Last order accepted 30 minutes before closing. Jain preparation available on request.</span>
+            </div>
+
+            <div class="dining-button-group">
+              <a href="https://menu.lafloraclub.com" target="_blank" rel="noopener" class="btn-solid-dark">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <span>Open Digital Menu (Dine-in Shortlist)</span>
+              </a>
+              <a href="tel:9737982028" class="btn-outline-dark">
+                <i class="fa-solid fa-phone"></i>
+                <span>Call Restaurant: 97379 82028</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="dining-visual-side">
+            <div class="dining-visual-wrapper">
+              <img 
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" 
+                alt="Areca culinary dishes and interior ambiance" 
+                class="dining-feature-img"
+                loading="lazy"
+              >
+              <div class="dining-badge-overlay">
+                <span class="badge-brand">ARECA</span>
+                <span class="badge-sub">by La-Flora</span>
+                <a href="https://menu.lafloraclub.com" target="_blank" rel="noopener" class="badge-cta">
+                  <span>menu.lafloraclub.com</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WEDDINGS & PRIVATE CELEBRATIONS BANNER -->
+    <section class="banner-section">
+      <div class="banner-media-wrap">
+        <img 
+          src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1920&q=80" 
+          alt="Lush green celebration lawn at sunset at La Flora Club" 
+          class="banner-bg-img"
+          loading="lazy"
+        >
+        <div class="banner-scrim"></div>
+      </div>
+
+      <div class="container banner-container">
+        <div class="banner-content">
+          <span class="banner-kicker">WEDDINGS &amp; OCCASIONS</span>
+          <h2 class="banner-title">Celebrate Life's Greatest Milestones</h2>
+          <p class="banner-text">
+            Under glowing chandeliers or sprawling star-lit skies, create cherished memories for your wedding, reception, or corporate gala. Accommodating intimate gatherings to 1000+ guests.
+          </p>
+          <div class="banner-actions">
+            <button class="btn-banner-light trigger-inquiry" data-service="Celebration Lawn & Wedding Booking" type="button">
+              <i class="fa-regular fa-envelope"></i>
+              <span>Book Your Event Dates</span>
+            </button>
+            <a href="tel:9737982028" class="btn-banner-phone">
+              <i class="fa-solid fa-phone"></i>
+              <span>+91 97379 82028</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & CONCIERGE SECTION -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card-wrapper">
+          <div class="contact-info-panel">
+            <span class="sub-heading-kicker">RESERVATIONS &amp; LOCATION</span>
+            <h2 class="contact-panel-heading">Connect With La Flora Club</h2>
+            <p class="contact-panel-lead">
+              Our team is at your service for dining reservations, wedding lawn dates, and resort stays.
+            </p>
+
+            <div class="contact-channel-list">
+              <div class="contact-channel-item">
+                <div class="channel-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="channel-meta">
+                  <span class="channel-label">ADDRESS</span>
+                  <span class="channel-val">Ville Flora, La Flora Club</span>
+                </div>
+              </div>
+
+              <div class="contact-channel-item">
+                <div class="channel-icon"><i class="fa-solid fa-phone"></i></div>
+                <div class="channel-meta">
+                  <span class="channel-label">PHONE &amp; RESERVATIONS</span>
+                  <a href="tel:9737982028" class="channel-link">+91 97379 82028</a>
+                </div>
+              </div>
+
+              <div class="contact-channel-item">
+                <div class="channel-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="channel-meta">
+                  <span class="channel-label">OFFICIAL EMAIL</span>
+                  <a href="mailto:info@lafloraclub.com" class="channel-link">info@lafloraclub.com</a>
+                </div>
+              </div>
+
+              <div class="contact-channel-item">
+                <div class="channel-icon"><i class="fa-solid fa-utensils"></i></div>
+                <div class="channel-meta">
+                  <span class="channel-label">ARECA DIGITAL MENU</span>
+                  <a href="https://menu.lafloraclub.com" target="_blank" rel="noopener" class="channel-link">menu.lafloraclub.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="whatsapp-quick-box">
+              <a href="https://wa.me/919737982028?text=Hello%20La%20Flora%20Club,%20I%20would%20like%20to%20make%20an%20inquiry" target="_blank" rel="noopener" class="btn-whatsapp-solid">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>Direct WhatsApp Concierge</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-form-panel">
+            <h3 class="form-panel-title">Send An Inquiry</h3>
+            <p class="form-panel-sub">We reply promptly with availability and customized details.</p>
+
+            <form id="contactInquiryForm" class="clean-form">
+              <div class="form-row-2">
+                <div class="input-field">
+                  <label for="cName">Your Name *</label>
+                  <input type="text" id="cName" name="name" required placeholder="Full Name">
+                </div>
+                <div class="input-field">
+                  <label for="cPhone">Contact Number *</label>
+                  <input type="tel" id="cPhone" name="phone" required placeholder="+91 97379 82028">
+                </div>
+              </div>
+
+              <div class="input-field">
+                <label for="cService">Inquiry Category</label>
+                <select id="cService" name="service">
+                  <option value="Areca Dining Table Reservation">Table Reservation (Areca Restaurant)</option>
+                  <option value="Weddings & Banquets Lawn">Grand Wedding &amp; Banquet Lawn</option>
+                  <option value="Resort Stay & Cottages">Resort Stay &amp; Cottages</option>
+                  <option value="Club Outing & Recreation">Club Outing &amp; Day Pass</option>
+                  <option value="General Query">General Question</option>
+                </select>
+              </div>
+
+              <div class="input-field">
+                <label for="cNotes">Preferred Date / Details / Number of Guests</label>
+                <textarea id="cNotes" name="notes" rows="3" placeholder="Tell us about your expected dates, occasion, or guest count..."></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit-form" id="submitFormBtn">
+                <span>Send via WhatsApp Concierge</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+
+              <div id="formStatusMsg" class="form-status-msg" hidden></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- REFINED LUXURY FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-grid">
+        <!-- Col 1: Identity -->
+        <div class="footer-col brand-col">
+          <div class="footer-brand-title">LA FLORA CLUB</div>
+          <div class="footer-brand-tagline">TIMELESS MEMORIES • VILLE FLORA</div>
+          <p class="footer-about-text">
+            A boutique leisure retreat offering tranquil stays, expansive celebration lawns, and culinary excellence at Areca.
+          </p>
+          <div class="footer-social-row">
+            <a href="tel:9737982028" class="f-social-btn" aria-label="Call +91 97379 82028"><i class="fa-solid fa-phone"></i></a>
+            <a href="mailto:info@lafloraclub.com" class="f-social-btn" aria-label="Email info@lafloraclub.com"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://wa.me/919737982028" target="_blank" rel="noopener" class="f-social-btn" aria-label="WhatsApp Concierge"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://menu.lafloraclub.com" target="_blank" rel="noopener" class="f-social-btn" aria-label="Areca Digital Menu"><i class="fa-solid fa-utensils"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Navigate</h4>
+          <ul class="footer-nav">
+            <li><a href="#about">The Club Ethos</a></li>
+            <li><a href="#experiences">Experiences</a></li>
+            <li><a href="#dining">Areca Dining</a></li>
+            <li><a href="#celebrations">Celebration Lawns</a></li>
+            <li><a href="#stays">Resort Stays</a></li>
+            <li><a href="#contact">Contact &amp; Location</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Areca Hours -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Areca Restaurant</h4>
+          <ul class="footer-timings">
+            <li><span class="f-meal">Breakfast:</span> 7:00 AM – 10:30 AM</li>
+            <li><span class="f-meal">Lunch:</span> 12:00 PM – 3:30 PM</li>
+            <li><span class="f-meal">High Tea:</span> 4:30 PM – 6:30 PM</li>
+            <li><span class="f-meal">Dinner:</span> 7:00 PM – 11:00 PM</li>
+          </ul>
+          <a href="https://menu.lafloraclub.com" target="_blank" rel="noopener" class="footer-menu-cta">
+            <i class="fa-solid fa-qrcode"></i>
+            <span>Browse Areca Digital Menu</span>
+          </a>
+        </div>
+
+        <!-- Col 4: Contact -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Direct Contact</h4>
+          <address class="footer-addr">
+            <p><i class="fa-solid fa-location-dot"></i> Ville Flora, La Flora Club</p>
+            <p><i class="fa-solid fa-phone"></i> <a href="tel:9737982028">+91 97379 82028</a></p>
+            <p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@lafloraclub.com">info@lafloraclub.com</a></p>
+          </address>
+        </div>
+      </div>
+
+      <div class="footer-bottom-line">
+        <p>&copy; <span id="currentYear">2026</span> La Flora Club. Timeless Memories at Ville Flora. All rights reserved.</p>
+        <p class="footer-menu-credit">Digital Menu: <a href="https://menu.lafloraclub.com" target="_blank" rel="noopener">Areca - The Culinary Destination</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING QUICK WHATSAPP -->
+  <a href="https://wa.me/919737982028?text=Hello%20La%20Flora%20Club,%20I%20would%20like%20to%20make%20an%20inquiry" 
+     target="_blank" 
+     rel="noopener" 
+     class="floating-whatsapp" 
+     aria-label="Direct WhatsApp Concierge">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="whatsapp-label">Concierge</span>
+  </a>
+
+  <!-- INQUIRY MODAL -->
+  <div class="modal-backdrop" id="inquiryModal" hidden>
+    <div class="modal-card" role="dialog" aria-labelledby="modalHeading" aria-modal="true">
+      <div class="modal-header">
+        <div>
+          <span class="modal-kicker">VILLE FLORA CONCIERGE</span>
+          <h3 id="modalHeading" class="modal-title">Inquire &amp; Reserve</h3>
+        </div>
+        <button class="modal-close-btn" id="closeInquiryModalBtn" aria-label="Close modal" type="button">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p class="modal-desc">
+          Speak with our team directly at <strong>+91 97379 82028</strong> or send your preferred dates below:
+        </p>
+
+        <form id="modalForm" class="clean-form">
+          <div class="input-field">
+            <label for="mName">Your Name *</label>
+            <input type="text" id="mName" required placeholder="Full Name">
+          </div>
+          <div class="input-field">
+            <label for="mPhone">Phone Number *</label>
+            <input type="tel" id="mPhone" required placeholder="+91 97379 82028">
+          </div>
+          <div class="input-field">
+            <label for="mService">Select Service</label>
+            <select id="mService">
+              <option value="Areca Table Reservation">Table Reservation (Areca Restaurant)</option>
+              <option value="Weddings & Banquets Lawn">Grand Wedding &amp; Banquet Lawn</option>
+              <option value="Resort Stay & Cottages">Resort Stay &amp; Cottages</option>
+              <option value="Club Outing & Recreation">Club Outing &amp; Day Pass</option>
+            </select>
+          </div>
+          <div class="input-field">
+            <label for="mNotes">Dates &amp; Details</label>
+            <textarea id="mNotes" rows="2" placeholder="Date, guest count, or special notes..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit-form">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Send via WhatsApp Concierge</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
