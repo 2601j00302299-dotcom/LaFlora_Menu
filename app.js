@@ -73,22 +73,47 @@
     return parseInt(clean, 10) || 0;
   }
 
-  // Load selection from sessionStorage
+  const SELECTION_STORAGE_KEY = 'areca_my_selection_v2';
+  const SELECTION_TTL_MS = 6 * 60 * 60 * 1000; // 6 hours dining session window
+
+  // Load selection from persistent localStorage (survives tab close, phone restart, etc.)
   function loadSelection() {
     try {
-      const saved = sessionStorage.getItem(SELECTION_STORAGE_KEY);
-      if (saved) {
-        state.selection = JSON.parse(saved);
+      const raw = localStorage.getItem(SELECTION_STORAGE_KEY);
+      if (raw) {
+        const data = JSON.parse(raw);
+        // Verify selection was created within last 6 hours
+        if (data && data.timestamp && (Date.now() - data.timestamp < SELECTION_TTL_MS)) {
+          state.selection = data.items || {};
+        } else {
+          // Cleared if older than 6 hours (previous dining session)
+          localStorage.removeItem(SELECTION_STORAGE_KEY);
+          state.selection = {};
+        }
+      } else {
+        // Fallback check for any legacy session
+        const legacy = sessionStorage.getItem('areca_my_selection');
+        if (legacy) {
+          state.selection = JSON.parse(legacy);
+          sessionStorage.removeItem('areca_my_selection');
+        }
       }
     } catch (e) {
       state.selection = {};
     }
   }
 
-  // Save selection and update all indicators
+  // Save selection to persistent localStorage
   function saveSelection() {
     try {
-      sessionStorage.setItem(SELECTION_STORAGE_KEY, JSON.stringify(state.selection));
+      if (Object.keys(state.selection).length > 0) {
+        localStorage.setItem(SELECTION_STORAGE_KEY, JSON.stringify({
+          timestamp: Date.now(),
+          items: state.selection
+        }));
+      } else {
+        localStorage.removeItem(SELECTION_STORAGE_KEY);
+      }
     } catch (e) {}
     updateSelectionUI();
   }
