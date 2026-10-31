@@ -7,6 +7,11 @@
   <meta name="description" content="Official digital menu of Areca - The Culinary Destination by La-Flora. Authentic Breakfast, Soups, Tandoor, Italian, Oriental, Indian and Beverages.">
   <meta name="theme-color" content="#F5F2EB">
   
+  <!-- Cache Prevention Meta Tags for Mobile Browsers & CDNs -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  
   <!-- Google Fonts: Script matching PDF + Elegant Serif & Clean Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +20,8 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
-  <link rel="stylesheet" href="styles.css">
+  <!-- Versioned Stylesheet to bust browser/mobile cache -->
+  <link rel="stylesheet" href="styles.css?v=2.2.0">
 </head>
 <body>
 
@@ -292,8 +298,9 @@
     </div>
   </div>
 
-  <script src="qrcode.min.js"></script>
-  <script src="menu-data.js"></script>
-  <script src="app.js"></script>
+  <!-- Versioned Scripts to bust browser/mobile cache -->
+  <script src="qrcode.min.js?v=2.2.0"></script>
+  <script src="menu-data.js?v=2.2.0"></script>
+  <script src="app.js?v=2.2.0"></script>
 </body>
 </html>
