@@ -25,7 +25,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Versioned Stylesheet to bust browser/mobile cache -->
-  <link rel="stylesheet" href="styles.css?v=3.12.0">
+  <link rel="stylesheet" href="styles.css?v=3.15.0">
 </head>
 
 <body>
@@ -114,9 +114,12 @@
 
     <!-- Empty State -->
     <div class="empty-state" id="emptyState" style="display: none;">
-      <p class="empty-title">No items found</p>
-      <p class="empty-desc">Please try a different search word.</p>
-      <button class="btn-menu" id="emptyClearBtn" type="button">View Complete Menu</button>
+      <div class="empty-icon"><i class="fa-solid fa-utensils"></i></div>
+      <p class="empty-title">No dishes match your search</p>
+      <p class="empty-desc">Please try another search word or view our complete menu.</p>
+      <button class="btn-continue-browsing empty-clear-btn" id="emptyClearBtn" type="button">
+        View Complete Menu
+      </button>
     </div>
 
     <!-- Menu Sections Wrapper (Rendered with PDF Left Gutter + Swirl + Vertical Gold Line) -->
@@ -347,9 +350,9 @@
   </div>
 
   <!-- Versioned Scripts to bust browser/mobile cache -->
-  <script src="qrcode.min.js?v=3.12.0"></script>
-  <script src="menu-data.js?v=3.12.0"></script>
-  <script src="app.js?v=3.12.0"></script>
+  <script src="qrcode.min.js?v=3.15.0"></script>
+  <script src="menu-data.js?v=3.15.0"></script>
+  <script src="app.js?v=3.15.0"></script>
 </body>
 
 </html>

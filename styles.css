@@ -71,8 +71,6 @@
   /* Muted gold/bronze */
   --pdf-gold-subtle: rgba(163, 116, 51, 0.16);
   --pdf-gold-border: rgba(163, 116, 51, 0.38);
-  --pdf-gold-gradient: linear-gradient(135deg, #D4AF6A 0%, #A37433 100%);
-  --pdf-gold-gradient-hover: linear-gradient(135deg, #DFC080 0%, #8F6326 100%);
 
   --pdf-charcoal: #1A1A17;
   /* Exact heading charcoal / black from PDF */
@@ -340,7 +338,7 @@ body {
   position: absolute;
   top: -4px;
   right: -4px;
-  background: var(--pdf-gold-gradient);
+  background: var(--pdf-gold);
   color: #FFFFFF;
   font-size: 0.65rem;
   font-weight: 700;
@@ -407,6 +405,16 @@ body {
   font-size: 0.84rem;
 }
 
+/* Remove native browser search cancel button in Chrome/Safari to prevent double 'X' */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
 .clear-search-btn {
   position: absolute;
   right: 10px;
@@ -417,6 +425,20 @@ body {
   padding: 4px;
   display: none;
   font-size: 0.9rem;
+  transition: color 0.15s ease;
+}
+
+.clear-search-btn:hover {
+  color: #B91C1C;
+}
+
+/* Matched Search Keyword Highlight */
+.search-highlight {
+  background: rgba(212, 175, 106, 0.35);
+  color: inherit;
+  font-weight: 700;
+  border-radius: 2px;
+  padding: 0 1px;
 }
 
 /* ==========================================================================
@@ -464,11 +486,10 @@ body {
 }
 
 .cat-nav-link.active {
-  background: var(--pdf-gold-gradient);
+  background: var(--pdf-gold);
   color: #FFFFFF;
   border-color: var(--pdf-gold);
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(163, 116, 51, 0.28);
 }
 
 /* ==========================================================================
@@ -551,37 +572,55 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--pdf-bg-card);
+  background: #FAF8F2;
   border: 1px solid var(--pdf-gold-border);
-  padding: 8px 14px;
-  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
   margin-bottom: 20px;
-  font-size: 0.84rem;
+  font-size: 0.86rem;
   color: var(--pdf-charcoal);
+  box-shadow: 0 1px 6px rgba(163, 116, 51, 0.08);
 }
 
 .clear-filter-link {
-  background: none;
-  border: none;
+  background: transparent;
+  border: 1px solid var(--pdf-gold-border);
   color: var(--pdf-gold);
   font-weight: 600;
-  text-decoration: underline;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
   cursor: pointer;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.clear-filter-link:hover {
+  background: var(--pdf-gold);
+  color: #FFFFFF;
+  border-color: var(--pdf-gold);
 }
 
 .empty-state {
   text-align: center;
-  padding: 50px 20px;
-  background: var(--pdf-bg-card);
+  padding: 38px 20px 42px;
+  background: #FAF8F2;
   border: 1px dashed var(--pdf-gold-border);
   border-radius: var(--radius-md);
-  margin: 20px 0;
+  margin: 16px 0 30px;
+}
+
+.empty-state .empty-icon {
+  font-size: 2rem;
+  color: var(--pdf-gold);
+  margin-bottom: 12px;
+  opacity: 0.85;
 }
 
 .empty-title {
   font-family: var(--font-serif);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
+  font-weight: 600;
   color: var(--pdf-charcoal);
   margin-bottom: 6px;
 }
@@ -592,15 +631,9 @@ body {
   margin-bottom: 14px;
 }
 
-.btn-menu {
-  background: var(--pdf-gold);
-  color: #FFFFFF;
-  border: none;
-  padding: 8px 16px;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: 0.82rem;
-  cursor: pointer;
+.empty-clear-btn {
+  margin-top: 6px;
+  display: inline-block;
 }
 
 /* ==========================================================================
@@ -803,7 +836,7 @@ body {
 
 .btn-add-select:hover,
 .btn-add-select:active {
-  background: var(--pdf-gold-gradient);
+  background: var(--pdf-gold);
   color: #FFFFFF;
   border-color: var(--pdf-gold);
   transform: scale(1.08);
@@ -912,13 +945,12 @@ body {
 }
 
 .selection-badge {
-  background: var(--pdf-gold-gradient);
+  background: var(--pdf-gold);
   color: #FFFFFF;
   font-weight: 700;
   font-size: 0.75rem;
   padding: 2px 8px;
   border-radius: 999px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 .selection-title-text {
@@ -938,7 +970,7 @@ body {
 }
 
 .selection-view-btn {
-  background: var(--pdf-gold-gradient);
+  background: var(--pdf-gold);
   color: #FFFFFF;
   border: none;
   border-radius: var(--radius-full);
@@ -949,13 +981,11 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 2px 8px rgba(163, 116, 51, 0.35);
   transition: var(--transition);
 }
 
 .selection-view-btn:hover {
-  background: var(--pdf-gold-gradient-hover);
-  transform: translateY(-1px);
+  background: var(--pdf-gold-dark);
 }
 
 /* ==========================================================================
@@ -1126,7 +1156,7 @@ body {
 }
 
 .drawer-selection-count {
-  background: var(--pdf-gold-gradient);
+  background: var(--pdf-gold);
   color: #FFFFFF;
   font-size: 0.72rem;
   font-weight: 700;
@@ -1681,9 +1711,9 @@ body {
 }
 
 .btn-continue-browsing {
-  background: var(--pdf-gold-gradient);
+  background: var(--pdf-gold);
   color: #FFFFFF;
-  border: 1px solid rgba(163, 116, 51, 0.3);
+  border: 1px solid var(--pdf-gold);
   padding: 8px 18px;
   border-radius: var(--radius-full);
   cursor: pointer;
@@ -1691,14 +1721,14 @@ body {
   font-weight: 600;
   letter-spacing: 0.3px;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(163, 116, 51, 0.28);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
   transition: var(--transition);
 }
 
 .btn-continue-browsing:hover {
-  background: var(--pdf-gold-gradient-hover);
+  background: var(--pdf-gold-dark);
+  border-color: var(--pdf-gold-dark);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(163, 116, 51, 0.35);
 }
 
 /* ==========================================================================

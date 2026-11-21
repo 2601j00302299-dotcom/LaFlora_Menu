@@ -330,20 +330,84 @@
   }
 
 
-    const SWIRL_SVG_HTML = `<svg class="swirl-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52.39 315.58" preserveAspectRatio="none">
+  const SWIRL_SVG_HTML = `<svg class="swirl-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52.39 315.58" preserveAspectRatio="none">
     <path d="M 38.55 315.01 C 34.18 310.43, 32.24 304.32, 32.01 298.08 C 31.75 291.52, 33.11 284.95, 35.00 278.70 C 37.06 271.84, 39.87 265.23, 41.71 258.30 C 43.52 251.49, 44.64 244.21, 43.07 237.24 C 41.75 231.39, 38.46 226.45, 34.03 222.49 C 29.96 218.85, 25.26 216.02, 20.66 213.11 C 16.14 210.25, 11.55 207.30, 7.89 203.36 C 3.81 198.98, 1.33 193.39, 1.43 187.35 C 1.53 180.24, 4.88 173.59, 8.88 167.90 C 13.13 161.86, 18.37 156.40, 23.91 151.54 C 28.97 147.11, 35.36 143.30, 42.31 145.10 C 45.16 145.84, 47.79 147.53, 49.19 150.17 C 50.56 152.75, 50.35 155.79, 49.08 158.37 C 47.80 160.98, 45.58 163.13, 42.98 164.41 C 40.19 165.79, 37.12 165.91, 34.17 165.00 C 28.03 163.09, 23.66 157.30, 21.87 151.32 C 19.48 143.36, 21.10 134.81, 22.67 126.86 C 24.34 118.37, 26.03 109.88, 27.72 101.39 C 29.40 92.93, 31.20 84.48, 32.72 75.99 C 34.08 68.36, 34.91 60.26, 32.32 52.79 C 30.31 46.99, 26.29 41.57, 20.41 39.30 C 15.51 37.41, 9.51 38.42, 5.43 41.72 C 3.49 43.30, 2.06 45.43, 1.47 47.87 C 1.43 48.02, 1.54 48.18, 1.70 48.18 C 10.17 47.85, 18.21 43.29, 23.12 36.42 C 28.17 29.35, 29.19 20.17, 26.38 12.00 C 24.81 7.47, 22.11 3.33, 18.47 0.20 C 18.23 0.00, 17.89 0.34, 18.13 0.54 C 24.52 6.03, 27.92 14.58, 27.41 22.96 C 26.88 31.44, 22.00 39.04, 14.86 43.54 C 10.92 46.03, 6.37 47.52, 1.70 47.70 C 1.77 47.80, 1.85 47.90, 1.93 48.00 C 3.30 42.38, 9.01 39.10, 14.51 38.86 C 21.03 38.57, 26.54 42.80, 29.71 48.23 C 33.64 54.93, 34.00 62.82, 33.10 70.36 C 32.57 74.73, 31.66 79.05, 30.81 83.36 C 29.95 87.69, 29.09 92.03, 28.23 96.36 C 26.52 104.98, 24.81 113.60, 23.10 122.23 C 21.48 130.39, 19.40 138.82, 20.52 147.19 C 21.36 153.53, 24.46 159.76, 29.86 163.42 C 32.29 165.07, 35.24 166.15, 38.20 166.10 C 41.03 166.04, 43.74 164.86, 45.91 163.09 C 50.15 159.60, 52.39 153.35, 48.76 148.62 C 45.12 143.87, 38.10 143.25, 32.83 145.24 C 29.46 146.52, 26.51 148.65, 23.81 150.99 C 21.05 153.40, 18.42 155.98, 15.91 158.65 C 10.90 163.97, 6.22 169.89, 3.36 176.67 C 0.74 182.89, 0.00 189.83, 2.62 196.18 C 4.62 201.03, 8.28 204.87, 12.38 208.04 C 16.77 211.44, 21.62 214.19, 26.25 217.24 C 30.81 220.25, 35.31 223.62, 38.51 228.12 C 42.63 233.93, 43.80 241.03, 43.15 248.02 C 42.45 255.62, 39.96 262.97, 37.41 270.12 C 35.15 276.48, 32.99 282.85, 32.03 289.56 C 31.15 295.71, 31.16 302.23, 33.52 308.07 C 34.61 310.78, 36.20 313.24, 38.21 315.35 Z" fill="#1A1A17" stroke="#1A1A17" stroke-width="0.75"/>
   </svg>`;
+  const SEARCH_SYNONYMS = {
+    'dessert': ['sweet and dessert', 'sweet-and-dessert', 'dessert', 'desserts', 'ice cream', 'gulab jamun', 'brownie', 'halwa', 'kulfi', 'tiramisu'],
+    'desserts': ['sweet and dessert', 'sweet-and-dessert', 'dessert', 'desserts', 'ice cream', 'gulab jamun', 'brownie', 'halwa', 'kulfi', 'tiramisu'],
+    'sweet': ['sweet and dessert', 'sweet-and-dessert', 'dessert', 'halwa', 'gulab jamun', 'brownie', 'kulfi'],
+    'sweets': ['sweet and dessert', 'sweet-and-dessert', 'dessert', 'desserts', 'halwa', 'gulab jamun', 'brownie', 'kulfi'],
+    'soup': ['soup & shorba', 'shorba', 'soup', 'thukpa', 'manchow', 'hot & sour'],
+    'soups': ['soup & shorba', 'shorba', 'soup', 'thukpa', 'manchow', 'hot & sour'],
+    'starter': ['starters', 'oriental-starters', 'western-starters', 'tikka', 'kebab', 'manchurian'],
+    'starters': ['starters', 'oriental-starters', 'western-starters', 'tikka', 'kebab', 'manchurian'],
+    'drinks': ['refreshing-beverages', 'refreshing beverages', 'beverage', 'mocktail', 'shake', 'cold coffee', 'smoothie', 'mojito', 'cooler', 'soda'],
+    'drink': ['refreshing-beverages', 'refreshing beverages', 'beverage', 'mocktail', 'shake', 'cold coffee', 'smoothie', 'mojito', 'cooler', 'soda'],
+    'beverage': ['refreshing-beverages', 'refreshing beverages', 'beverage', 'mocktail', 'shake'],
+    'beverages': ['refreshing-beverages', 'refreshing beverages', 'beverages', 'mocktail', 'shake'],
+    'chinese': ['oriental-express', 'oriental express', 'oriental-starters', 'oriental starters', 'noodles', 'fried rice', 'manchurian', 'spring roll'],
+    'italian': ['italian delicious', 'pasta', 'pizza', 'bruschetta'],
+    'bread': ['tandoor delights', 'roti', 'naan', 'kulcha', 'paratha'],
+    'breads': ['tandoor delights', 'roti', 'naan', 'kulcha', 'paratha'],
+    'rice': ['shahi handi chawal', 'biryani', 'pulao', 'steamed rice', 'jeera rice', 'curd rice', 'fried rice']
+  };
+
+  function termMatchesBlob(blob, term) {
+    if (term.length <= 3) {
+      const reg = new RegExp('\\b' + term + '\\b', 'i');
+      return reg.test(blob);
+    }
+    return blob.includes(term);
+  }
+
+  function highlightSearchTerms(text, tokens) {
+    if (!text) return '';
+    let escaped = escapeHtml(text);
+    if (!tokens || tokens.length === 0) return escaped;
+    tokens.forEach(tok => {
+      if (tok.length < 2) return;
+      const safeTok = escapeHtml(tok).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const reg = new RegExp(`(${safeTok})`, 'gi');
+      escaped = escaped.replace(reg, '<mark class="search-highlight">$1</mark>');
+    });
+    return escaped;
+  }
+
   function renderMenu() {
     const q = state.searchQuery.toLowerCase().trim();
+    const tokens = q ? q.split(/\s+/).filter(Boolean) : [];
     let totalMatches = 0;
     let html = '';
+
+    // Hide hero cover when searching so matches appear immediately at the top
+    const coverHeroEl = document.querySelector('.cover-hero');
+    if (coverHeroEl) {
+      coverHeroEl.style.display = q ? 'none' : '';
+    }
 
     MENU_SECTIONS.forEach(sec => {
       const matchingItems = sec.items.filter(item => {
         if (!q) return true;
-        const matchName = item.name.toLowerCase().includes(q);
-        const matchDesc = item.desc ? item.desc.toLowerCase().includes(q) : false;
-        return matchName || matchDesc;
+
+        const searchBlob = [
+          item.name,
+          item.desc || '',
+          item.subheading || '',
+          sec.title,
+          sec.parentTitle || '',
+          sec.gutterLabel || sec.categoryNote || '',
+          sec.id
+        ].join(' ').toLowerCase();
+
+        return tokens.every(token => {
+          if (termMatchesBlob(searchBlob, token)) return true;
+          if (token.endsWith('s') && termMatchesBlob(searchBlob, token.slice(0, -1))) return true;
+          if (token.endsWith('es') && termMatchesBlob(searchBlob, token.slice(0, -2))) return true;
+          const syns = SEARCH_SYNONYMS[token];
+          if (syns && syns.some(s => termMatchesBlob(searchBlob, s))) return true;
+          return false;
+        });
       });
 
       if (matchingItems.length > 0) {
@@ -376,13 +440,13 @@
                     ${item.subheading ? `<div class="dishes-subheading" ${item.subheadingId ? `id="${item.subheadingId}"` : ''}>${escapeHtml(item.subheading)}</div>` : ''}
                     <article class="dish-item" data-item-name="${escapeHtml(item.name)}">
                       <div class="dish-header-row">
-                        <h3 class="dish-title">${escapeHtml(item.name)}</h3>
+                        <h3 class="dish-title">${highlightSearchTerms(item.name, tokens)}</h3>
                         <div class="dish-price-action">
                           <span class="dish-price">${escapeHtml(item.price)}</span>
                           ${renderDishSelectAction(item)}
                         </div>
                       </div>
-                      ${item.desc ? `<p class="dish-description">${escapeHtml(item.desc).replace(/\n/g, '<br>')}</p>` : ''}
+                      ${item.desc ? `<p class="dish-description">${highlightSearchTerms(item.desc, tokens).replace(/\n/g, '<br>')}</p>` : ''}
                     </article>
                   `).join('')}
                 </div>
@@ -398,13 +462,15 @@
     // Handle Search Feedback
     if (q) {
       DOM.searchFeedback.style.display = 'flex';
-      DOM.searchCount.textContent = `Showing ${totalMatches} item${totalMatches === 1 ? '' : 's'} matching "${q}"`;
+      DOM.searchCount.innerHTML = `Showing <strong>${totalMatches}</strong> dish${totalMatches === 1 ? '' : 'es'} matching "<strong>${escapeHtml(q)}</strong>"`;
     } else {
       DOM.searchFeedback.style.display = 'none';
     }
 
     if (totalMatches === 0) {
       DOM.emptyState.style.display = 'block';
+      const emptyQueryEl = document.getElementById('emptySearchQuery');
+      if (emptyQueryEl) emptyQueryEl.textContent = q;
     } else {
       DOM.emptyState.style.display = 'none';
     }
@@ -597,31 +663,47 @@
 
   function setupEventListeners() {
     // Search Input
+    DOM.menuSearchInput.addEventListener('focus', () => {
+      if (window.scrollY > 80) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+
     DOM.menuSearchInput.addEventListener('input', (e) => {
+      const prevQuery = state.searchQuery;
       state.searchQuery = e.target.value;
       DOM.clearSearchBtn.style.display = state.searchQuery ? 'block' : 'none';
       renderMenu();
+
+      // If user starts searching from middle/end of the page, smoothly scroll to top
+      if (state.searchQuery && (!prevQuery || window.scrollY > 100)) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     });
 
     DOM.clearSearchBtn.addEventListener('click', () => {
-      DOM.menuSearchInput.value = '';
-      state.searchQuery = '';
-      DOM.clearSearchBtn.style.display = 'none';
-      renderMenu();
+      clearSearch();
+      DOM.menuSearchInput.focus();
     });
 
     DOM.resetSearchBtn.addEventListener('click', clearSearch);
-    DOM.emptyClearBtn.addEventListener('click', clearSearch);
+    if (DOM.emptyClearBtn) DOM.emptyClearBtn.addEventListener('click', clearSearch);
 
     // Category Nav Click
     DOM.categoryNavScroll.addEventListener('click', (e) => {
       const link = e.target.closest('.cat-nav-link');
       if (!link) return;
 
+      const targetId = link.getAttribute('data-target');
+
+      // If user clicks a category while search is active, clear search to show category
+      if (state.searchQuery) {
+        clearSearch();
+      }
+
       DOM.categoryNavScroll.querySelectorAll('.cat-nav-link').forEach(l => l.classList.remove('active'));
       link.classList.add('active');
 
-      const targetId = link.getAttribute('data-target');
       const targetEl = document.getElementById(`sec-${targetId}`);
       if (targetEl) {
         e.preventDefault();
@@ -761,11 +843,20 @@
     });
   }
 
+  function setSearchQuery(q) {
+    DOM.menuSearchInput.value = q;
+    state.searchQuery = q;
+    DOM.clearSearchBtn.style.display = 'block';
+    renderMenu();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   function clearSearch() {
     DOM.menuSearchInput.value = '';
     state.searchQuery = '';
     DOM.clearSearchBtn.style.display = 'none';
     renderMenu();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function escapeHtml(text) {
