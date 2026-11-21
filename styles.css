@@ -71,6 +71,8 @@
   /* Muted gold/bronze */
   --pdf-gold-subtle: rgba(163, 116, 51, 0.16);
   --pdf-gold-border: rgba(163, 116, 51, 0.38);
+  --pdf-gold-gradient: linear-gradient(135deg, #D4AF6A 0%, #A37433 100%);
+  --pdf-gold-gradient-hover: linear-gradient(135deg, #DFC080 0%, #8F6326 100%);
 
   --pdf-charcoal: #1A1A17;
   /* Exact heading charcoal / black from PDF */
@@ -338,7 +340,7 @@ body {
   position: absolute;
   top: -4px;
   right: -4px;
-  background: var(--pdf-gold);
+  background: var(--pdf-gold-gradient);
   color: #FFFFFF;
   font-size: 0.65rem;
   font-weight: 700;
@@ -462,10 +464,11 @@ body {
 }
 
 .cat-nav-link.active {
-  background: var(--pdf-gold);
+  background: var(--pdf-gold-gradient);
   color: #FFFFFF;
   border-color: var(--pdf-gold);
   font-weight: 600;
+  box-shadow: 0 2px 8px rgba(163, 116, 51, 0.28);
 }
 
 /* ==========================================================================
@@ -800,9 +803,10 @@ body {
 
 .btn-add-select:hover,
 .btn-add-select:active {
-  background: var(--pdf-gold);
+  background: var(--pdf-gold-gradient);
   color: #FFFFFF;
-  transform: scale(1.06);
+  border-color: var(--pdf-gold);
+  transform: scale(1.08);
 }
 
 .dish-qty-control {
@@ -908,12 +912,13 @@ body {
 }
 
 .selection-badge {
-  background: var(--pdf-gold);
+  background: var(--pdf-gold-gradient);
   color: #FFFFFF;
   font-weight: 700;
   font-size: 0.75rem;
   padding: 2px 8px;
   border-radius: 999px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 .selection-title-text {
@@ -933,7 +938,7 @@ body {
 }
 
 .selection-view-btn {
-  background: var(--pdf-gold);
+  background: var(--pdf-gold-gradient);
   color: #FFFFFF;
   border: none;
   border-radius: var(--radius-full);
@@ -944,11 +949,13 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  box-shadow: 0 2px 8px rgba(163, 116, 51, 0.35);
   transition: var(--transition);
 }
 
 .selection-view-btn:hover {
-  background: var(--pdf-gold-dark);
+  background: var(--pdf-gold-gradient-hover);
+  transform: translateY(-1px);
 }
 
 /* ==========================================================================
@@ -1119,7 +1126,7 @@ body {
 }
 
 .drawer-selection-count {
-  background: var(--pdf-gold);
+  background: var(--pdf-gold-gradient);
   color: #FFFFFF;
   font-size: 0.72rem;
   font-weight: 700;
@@ -1528,20 +1535,65 @@ body {
 
 .selection-item-info {
   flex: 1;
+  min-width: 0;
 }
 
 .selection-item-name {
   font-family: var(--font-serif);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 600;
   color: var(--pdf-gold);
   text-transform: uppercase;
+  word-break: break-word;
 }
 
 .selection-item-rate {
   font-size: 0.78rem;
   color: var(--pdf-muted-text);
-  margin-top: 1px;
+  margin-top: 2px;
+}
+
+.selection-item-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.selection-item-total {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--pdf-charcoal);
+  min-width: 44px;
+  text-align: right;
+}
+
+.btn-remove-item {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 6px;
+  margin: 0;
+  color: #9C948A;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  line-height: 1;
+  border-radius: var(--radius-full);
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.15s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.btn-remove-item:hover,
+.btn-remove-item:active {
+  color: #B91C1C !important;
+  background-color: rgba(185, 28, 28, 0.08) !important;
+  transform: scale(1.12);
 }
 
 .selection-empty-notice {
@@ -1608,29 +1660,45 @@ body {
 }
 
 .btn-clear-selection {
-  background: none;
-  border: 1px solid var(--pdf-line);
-  color: var(--pdf-muted-text);
-  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--pdf-gold-border);
+  color: var(--pdf-charcoal);
+  padding: 7px 14px;
   border-radius: var(--radius-full);
   cursor: pointer;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: var(--transition);
 }
 
 .btn-clear-selection:hover {
   color: #B91C1C;
   border-color: #B91C1C;
+  background: rgba(185, 28, 28, 0.05);
 }
 
 .btn-continue-browsing {
-  background: var(--pdf-gold);
+  background: var(--pdf-gold-gradient);
   color: #FFFFFF;
-  border: none;
-  padding: 6px 14px;
+  border: 1px solid rgba(163, 116, 51, 0.3);
+  padding: 8px 18px;
   border-radius: var(--radius-full);
   cursor: pointer;
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 600;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(163, 116, 51, 0.28);
+  transition: var(--transition);
+}
+
+.btn-continue-browsing:hover {
+  background: var(--pdf-gold-gradient-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(163, 116, 51, 0.35);
 }
 
 /* ==========================================================================
