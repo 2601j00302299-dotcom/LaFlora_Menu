@@ -28,7 +28,9 @@ const RESTAURANT_INFO = {
 const MENU_SECTIONS = [
   {
     id: "breakfast-menu",
+    gutterLabel: "Breakfast Menu",
     title: "Breakfast Menu",
+    parentTitle: "Breakfast Menu",
     timing: "(Timings 7:00 Am to 10:30 Am)",
     categoryNote: "Breakfast Menu",
     items: [
@@ -91,7 +93,10 @@ const MENU_SECTIONS = [
   },
   {
     id: "soup",
-    title: "Soup",
+    title: "Soup & Shorba",
+    categoryNote: "Soup & Shorba",
+    gutterTop: "Soup",
+    gutterBottom: "Shorba",
     parentTitle: "Areca Menu",
     timing: "LUNCH (Timing 12:00 pm to 3:30 pm)\nDINNER (Timing 7:00 pm to 11:00 pm)",
     items: [
@@ -140,16 +145,11 @@ const MENU_SECTIONS = [
         price: "₹220",
         desc: "A classic soup made primarily from tomatoes."
       }
-    ]
-  },
-  {
-    id: "shorba",
-    title: "Shorba",
-    parentTitle: "Areca Menu",
-    timing: "LUNCH (Timing 12:00 pm to 3:30 pm)\nDINNER (Timing 7:00 pm to 11:00 pm)",
-    items: [
+    ,
       {
         name: "DAL NARIYAL KA SHORBA",
+        subheading: "Shorba",
+        subheadingId: "sec-shorba",
         price: "₹220",
         desc: "A blend of lentil broth and coconut milk."
       },
@@ -167,7 +167,9 @@ const MENU_SECTIONS = [
   },
   {
     id: "salads-accompaniments",
+    gutterLabel: "Salads & Accompaniments",
     title: "Salads & Accompaniments",
+    categoryNote: "Salads & Accompaniments",
     parentTitle: "Areca Menu",
     timing: "LUNCH (Timing 12:00 pm to 3:30 pm)\nDINNER (Timing 7:00 pm to 11:00 pm)",
     items: [
@@ -230,7 +232,10 @@ const MENU_SECTIONS = [
   },
   {
     id: "oriental-starters",
-    title: "Oriental Starters",
+    title: "Starters (Oriental & Tandoori)",
+    categoryNote: "Oriental Starters",
+    gutterTop: "Oriental",
+    gutterBottom: "Starters Tandoor-e-zaika",
     parentTitle: "Areca Menu",
     timing: "LUNCH (Timing 12:00 pm to 3:30 pm)\nDINNER (Timing 7:00 pm to 11:00 pm)",
     items: [
@@ -264,16 +269,11 @@ const MENU_SECTIONS = [
         price: "₹375",
         desc: "Chef’s special assorted dim sum."
       }
-    ]
-  },
-  {
-    id: "tandoor-e-zaika",
-    title: "Tandoor-e-zaika",
-    parentTitle: "Areca Menu",
-    timing: "LUNCH (Timing 12:00 pm to 3:30 pm)\nDINNER (Timing 7:00 pm to 11:00 pm)",
-    items: [
+    ,
       {
         name: "OG PANEER TIKKA",
+        subheading: "Tandoor-e-zaika",
+        subheadingId: "sec-tandoor-e-zaika",
         price: "₹350",
         desc: "Paneer marinated in traditional Indian spices."
       },
@@ -306,7 +306,9 @@ const MENU_SECTIONS = [
   },
   {
     id: "western-starters",
+    gutterLabel: "Western Starters",
     title: "Western Starters",
+    categoryNote: "Western Starters",
     parentTitle: "Areca Menu",
     timing: "LUNCH (Timing 12:00 pm to 3:30 pm)\nDINNER (Timing 7:00 pm to 11:00 pm)",
     items: [
@@ -369,7 +371,9 @@ const MENU_SECTIONS = [
   },
   {
     id: "italian-delicious",
+    gutterLabel: "Italian Delicious",
     title: "Italian Delicious",
+    categoryNote: "Italian Delicious",
     parentTitle: "Areca Menu",
     timing: "LUNCH (Timing 12:00 pm to 3:30 pm)\nDINNER (Timing 7:00 pm to 11:00 pm)",
     items: [
@@ -417,7 +421,10 @@ const MENU_SECTIONS = [
   },
   {
     id: "oriental-express",
+    gutterTop: "Oriental",
+    gutterBottom: "Express",
     title: "Oriental Express",
+    categoryNote: "Oriental Express",
     parentTitle: "Areca Menu",
     timing: "LUNCH (Timing 12:00 pm to 3:30 pm)\nDINNER (Timing 7:00 pm to 11:00 pm)",
     items: [
@@ -455,7 +462,9 @@ const MENU_SECTIONS = [
   },
   {
     id: "indian-delicious",
+    gutterLabel: "Indian Delicious",
     title: "Indian Delicious",
+    categoryNote: "Indian Delicious",
     parentTitle: "Areca Menu",
     timing: "LUNCH (Timing 12:00 pm to 3:30 pm)\nDINNER (Timing 7:00 pm to 11:00 pm)",
     items: [
@@ -533,7 +542,10 @@ const MENU_SECTIONS = [
   },
   {
     id: "shahi-handi-chawal",
+    gutterTop: "Shahi Handi",
+    gutterBottom: "Chawal",
     title: "Shahi Handi Chawal",
+    categoryNote: "Shahi Handi Chawal",
     parentTitle: "Areca Menu",
     timing: "LUNCH (Timing 12:00 pm to 3:30 pm)\nDINNER (Timing 7:00 pm to 11:00 pm)",
     items: [
@@ -566,7 +578,10 @@ const MENU_SECTIONS = [
   },
   {
     id: "tandoor-delights",
+    gutterTop: "Tandoor",
+    gutterBottom: "Delights Shahi Jugalbandi",
     title: "Tandoor Delights",
+    categoryNote: "Tandoor Delights",
     parentTitle: "Areca Menu",
     timing: "LUNCH (Timing 12:00 pm to 3:30 pm)\nDINNER (Timing 7:00 pm to 11:00 pm)",
     items: [
@@ -629,8 +644,10 @@ const MENU_SECTIONS = [
   },
   {
     id: "sweet-and-dessert",
+    gutterLabel: "Shahi Jugalbandi",
     title: "Sweet and Dessert",
-    parentTitle: "Areca Menu (Shahi Jugalbandi)",
+    parentTitle: "Areca Menu",
+    categoryNote: "Shahi Jugalbandi",
     timing: "LUNCH (Timing 12:00 pm to 3:30 pm)\nDINNER (Timing 7:00 pm to 11:00 pm)",
     items: [
       {
@@ -682,7 +699,9 @@ const MENU_SECTIONS = [
   },
   {
     id: "refreshing-beverages",
+    gutterLabel: "Refreshing Beverages",
     title: "Refreshing Beverages",
+    categoryNote: "Refreshing Beverages",
     parentTitle: "Refreshing Beverages",
     items: [
       {
@@ -754,7 +773,9 @@ const MENU_SECTIONS = [
   },
   {
     id: "round-the-clock",
+    gutterLabel: "Round The Clock",
     title: "Round The Clock",
+    parentTitle: "Round The Clock",
     timing: "Timing 4:30 pm to 6:30 pm",
     categoryNote: "Round The Clock",
     items: [

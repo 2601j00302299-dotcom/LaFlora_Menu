@@ -14,6 +14,7 @@
   };
 
   const DOM = {
+    appHeader: document.getElementById('appHeader'),
     menuSearchInput: document.getElementById('menuSearchInput'),
     clearSearchBtn: document.getElementById('clearSearchBtn'),
     categoryNavScroll: document.getElementById('categoryNavScroll'),
@@ -32,7 +33,7 @@
     qrCanvas: document.getElementById('qrCanvas'),
     printStandBtn: document.getElementById('printStandBtn'),
     downloadStandImgBtn: document.getElementById('downloadStandImgBtn'),
-    
+
     // My Selection Controls
     headerSelectionBtn: document.getElementById('headerSelectionBtn'),
     headerSelectionBadge: document.getElementById('headerSelectionBadge'),
@@ -47,7 +48,16 @@
     selectionModalFooter: document.getElementById('selectionModalFooter'),
     selectionFooterTotal: document.getElementById('selectionFooterTotal'),
     clearSelectionBtn: document.getElementById('clearSelectionBtn'),
-    closeSelectionFooterBtn: document.getElementById('closeSelectionFooterBtn')
+    closeSelectionFooterBtn: document.getElementById('closeSelectionFooterBtn'),
+
+    // Slide-out Drawer Controls (3-Line Luxury Menu)
+    menuDrawerBtn: document.getElementById('menuDrawerBtn'),
+    menuDrawer: document.getElementById('menuDrawer'),
+    closeDrawerBtn: document.getElementById('closeDrawerBtn'),
+    drawerSelectionBtn: document.getElementById('drawerSelectionBtn'),
+    drawerSelectionBadge: document.getElementById('drawerSelectionBadge'),
+    drawerSelectionDesc: document.getElementById('drawerSelectionDesc'),
+    drawerTimingsBtn: document.getElementById('drawerTimingsBtn')
   };
 
   const MENU_PERMANENT_URL = 'https://menu.lafloraclub.com';
@@ -55,13 +65,57 @@
   let qrInstance = null;
 
   function init() {
+    initSplashScreen();
     loadSelection();
     renderCategoryNav();
     renderMenu();
     initQrCode();
     setupEventListeners();
     setupScrollSpy();
+    setupHeaderScroll();
     updateSelectionUI();
+  }
+
+  // Luxury Brand Intro Splash Screen (La-Flora & Areca)
+  function initSplashScreen() {
+    const splash = document.getElementById('splashScreen');
+    if (!splash) return;
+
+    let dismissed = false;
+    function dismissSplash() {
+      if (dismissed) return;
+      dismissed = true;
+      splash.classList.add('splash-hidden');
+      setTimeout(() => {
+        if (splash.parentNode) splash.parentNode.removeChild(splash);
+      }, 500);
+    }
+
+    // Instant skip on tap/click
+    splash.addEventListener('click', dismissSplash);
+    splash.addEventListener('touchstart', dismissSplash, { passive: true });
+
+    // Smooth automatic reveal after 1.25s
+    setTimeout(dismissSplash, 1250);
+  }
+
+  // Micro-haptic tactile feedback for mobile taps
+  function triggerHaptic() {
+    if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+      try { navigator.vibrate(12); } catch (e) { }
+    }
+  }
+
+  // Auto-compact header on downward scroll (frees up viewing area on mobile)
+  function setupHeaderScroll() {
+    if (!DOM.appHeader) return;
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 90) {
+        DOM.appHeader.classList.add('header-compact');
+      } else {
+        DOM.appHeader.classList.remove('header-compact');
+      }
+    }, { passive: true });
   }
 
   // Parse numeric price from string (e.g. "₹ 350" -> 350)
@@ -112,7 +166,7 @@
       } else {
         localStorage.removeItem(SELECTION_STORAGE_KEY);
       }
-    } catch (e) {}
+    } catch (e) { }
     updateSelectionUI();
   }
 
@@ -139,6 +193,23 @@
       }
     }
 
+    // Drawer Selection Badge & Description
+    if (DOM.drawerSelectionBadge) {
+      if (totalItems > 0) {
+        DOM.drawerSelectionBadge.textContent = totalItems;
+        DOM.drawerSelectionBadge.removeAttribute('hidden');
+      } else {
+        DOM.drawerSelectionBadge.setAttribute('hidden', '');
+      }
+    }
+    if (DOM.drawerSelectionDesc) {
+      if (totalItems > 0) {
+        DOM.drawerSelectionDesc.textContent = `${totalItems} ${totalItems === 1 ? 'dish' : 'dishes'} • ₹${totalPrice.toLocaleString('en-IN')}`;
+      } else {
+        DOM.drawerSelectionDesc.textContent = 'View shortlisted dishes & total';
+      }
+    }
+
     // Floating Bottom Bar
     if (DOM.selectionFloatingBar) {
       if (totalItems > 0) {
@@ -157,6 +228,7 @@
   }
 
   function addItemToSelection(name, priceStr) {
+    triggerHaptic();
     if (!state.selection[name]) {
       state.selection[name] = {
         name: name,
@@ -172,6 +244,7 @@
   }
 
   function updateItemQty(name, delta) {
+    triggerHaptic();
     if (!state.selection[name]) return;
     state.selection[name].qty += delta;
     if (state.selection[name].qty <= 0) {
@@ -256,6 +329,10 @@
     DOM.categoryNavScroll.innerHTML = html;
   }
 
+
+    const SWIRL_SVG_HTML = `<svg class="swirl-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52.39 315.58" preserveAspectRatio="none">
+    <path d="M 38.55 315.01 C 34.18 310.43, 32.24 304.32, 32.01 298.08 C 31.75 291.52, 33.11 284.95, 35.00 278.70 C 37.06 271.84, 39.87 265.23, 41.71 258.30 C 43.52 251.49, 44.64 244.21, 43.07 237.24 C 41.75 231.39, 38.46 226.45, 34.03 222.49 C 29.96 218.85, 25.26 216.02, 20.66 213.11 C 16.14 210.25, 11.55 207.30, 7.89 203.36 C 3.81 198.98, 1.33 193.39, 1.43 187.35 C 1.53 180.24, 4.88 173.59, 8.88 167.90 C 13.13 161.86, 18.37 156.40, 23.91 151.54 C 28.97 147.11, 35.36 143.30, 42.31 145.10 C 45.16 145.84, 47.79 147.53, 49.19 150.17 C 50.56 152.75, 50.35 155.79, 49.08 158.37 C 47.80 160.98, 45.58 163.13, 42.98 164.41 C 40.19 165.79, 37.12 165.91, 34.17 165.00 C 28.03 163.09, 23.66 157.30, 21.87 151.32 C 19.48 143.36, 21.10 134.81, 22.67 126.86 C 24.34 118.37, 26.03 109.88, 27.72 101.39 C 29.40 92.93, 31.20 84.48, 32.72 75.99 C 34.08 68.36, 34.91 60.26, 32.32 52.79 C 30.31 46.99, 26.29 41.57, 20.41 39.30 C 15.51 37.41, 9.51 38.42, 5.43 41.72 C 3.49 43.30, 2.06 45.43, 1.47 47.87 C 1.43 48.02, 1.54 48.18, 1.70 48.18 C 10.17 47.85, 18.21 43.29, 23.12 36.42 C 28.17 29.35, 29.19 20.17, 26.38 12.00 C 24.81 7.47, 22.11 3.33, 18.47 0.20 C 18.23 0.00, 17.89 0.34, 18.13 0.54 C 24.52 6.03, 27.92 14.58, 27.41 22.96 C 26.88 31.44, 22.00 39.04, 14.86 43.54 C 10.92 46.03, 6.37 47.52, 1.70 47.70 C 1.77 47.80, 1.85 47.90, 1.93 48.00 C 3.30 42.38, 9.01 39.10, 14.51 38.86 C 21.03 38.57, 26.54 42.80, 29.71 48.23 C 33.64 54.93, 34.00 62.82, 33.10 70.36 C 32.57 74.73, 31.66 79.05, 30.81 83.36 C 29.95 87.69, 29.09 92.03, 28.23 96.36 C 26.52 104.98, 24.81 113.60, 23.10 122.23 C 21.48 130.39, 19.40 138.82, 20.52 147.19 C 21.36 153.53, 24.46 159.76, 29.86 163.42 C 32.29 165.07, 35.24 166.15, 38.20 166.10 C 41.03 166.04, 43.74 164.86, 45.91 163.09 C 50.15 159.60, 52.39 153.35, 48.76 148.62 C 45.12 143.87, 38.10 143.25, 32.83 145.24 C 29.46 146.52, 26.51 148.65, 23.81 150.99 C 21.05 153.40, 18.42 155.98, 15.91 158.65 C 10.90 163.97, 6.22 169.89, 3.36 176.67 C 0.74 182.89, 0.00 189.83, 2.62 196.18 C 4.62 201.03, 8.28 204.87, 12.38 208.04 C 16.77 211.44, 21.62 214.19, 26.25 217.24 C 30.81 220.25, 35.31 223.62, 38.51 228.12 C 42.63 233.93, 43.80 241.03, 43.15 248.02 C 42.45 255.62, 39.96 262.97, 37.41 270.12 C 35.15 276.48, 32.99 282.85, 32.03 289.56 C 31.15 295.71, 31.16 302.23, 33.52 308.07 C 34.61 310.78, 36.20 313.24, 38.21 315.35 Z" fill="#1A1A17" stroke="#1A1A17" stroke-width="0.75"/>
+  </svg>`;
   function renderMenu() {
     const q = state.searchQuery.toLowerCase().trim();
     let totalMatches = 0;
@@ -275,24 +352,40 @@
         html += `
           <section class="menu-section-block" id="sec-${sec.id}">
             <div class="section-header-wrap">
-              <h2 class="section-script-title">${escapeHtml(sec.title)}</h2>
-              ${sec.timing ? `<div class="section-timing">${escapeHtml(sec.timing)}</div>` : ''}
+              <h2 class="section-script-title">${escapeHtml(sec.parentTitle || sec.title)}</h2>
+              ${sec.timing ? `<div class="section-timing">${escapeHtml(sec.timing).replace(/\n/g, '<br>')}</div>` : ''}
             </div>
 
-            <div class="section-content-layout">
-              <div class="dishes-list">
-                ${matchingItems.map(item => `
-                  <article class="dish-item" data-item-name="${escapeHtml(item.name)}">
-                    <div class="dish-header-row">
-                      <h3 class="dish-title">${escapeHtml(item.name)}</h3>
-                      <div class="dish-price-action">
-                        <span class="dish-price">${escapeHtml(item.price)}</span>
-                        ${renderDishSelectAction(item)}
+            <div class="section-page-body">
+              ${sec.gutterTop && sec.gutterBottom ? `
+                <div class="section-left-gutter gutter-split" aria-hidden="true">
+                  <div class="rotated-side-label gutter-label-top">${escapeHtml(sec.gutterTop)}</div>
+                  <div class="gutter-swirl">${SWIRL_SVG_HTML}</div>
+                  <div class="rotated-side-label gutter-label-bottom">${escapeHtml(sec.gutterBottom)}</div>
+                </div>
+              ` : `
+                <div class="section-left-gutter gutter-single" aria-hidden="true">
+                  <div class="gutter-swirl">${SWIRL_SVG_HTML}</div>
+                  <div class="rotated-side-label gutter-label-bottom">${escapeHtml(sec.gutterLabel || sec.categoryNote || sec.title)}</div>
+                </div>
+              `}
+
+              <div class="section-items-col">
+                <div class="dishes-list">
+                  ${matchingItems.map(item => `
+                    ${item.subheading ? `<div class="dishes-subheading" ${item.subheadingId ? `id="${item.subheadingId}"` : ''}>${escapeHtml(item.subheading)}</div>` : ''}
+                    <article class="dish-item" data-item-name="${escapeHtml(item.name)}">
+                      <div class="dish-header-row">
+                        <h3 class="dish-title">${escapeHtml(item.name)}</h3>
+                        <div class="dish-price-action">
+                          <span class="dish-price">${escapeHtml(item.price)}</span>
+                          ${renderDishSelectAction(item)}
+                        </div>
                       </div>
-                    </div>
-                    ${item.desc ? `<p class="dish-description">${escapeHtml(item.desc)}</p>` : ''}
-                  </article>
-                `).join('')}
+                      ${item.desc ? `<p class="dish-description">${escapeHtml(item.desc).replace(/\n/g, '<br>')}</p>` : ''}
+                    </article>
+                  `).join('')}
+                </div>
               </div>
             </div>
           </section>
@@ -372,6 +465,7 @@
 
   // Generate QR Code Linking to Menu (Hardcoded Permanent Link)
   function initQrCode() {
+    if (!DOM.qrCanvas) return;
     DOM.qrCanvas.innerHTML = '';
     if (window.QRCode) {
       qrInstance = new QRCode(DOM.qrCanvas, {
@@ -407,11 +501,11 @@
       const ctx = canvas.getContext('2d');
 
       // 1. Background (Authentic warm ivory)
-      ctx.fillStyle = '#FAF8F2';
+      ctx.fillStyle = '#F4F4EA';
       ctx.fillRect(0, 0, w, h);
 
       // 2. Double Luxury Gold Border
-      ctx.strokeStyle = '#9F7B3F';
+      ctx.strokeStyle = '#A37433';
       ctx.lineWidth = 8;
       ctx.strokeRect(50, 50, w - 100, h - 100);
 
@@ -421,20 +515,20 @@
       // 3. Brand Logo (Areca)
       ctx.textAlign = 'center';
       ctx.fillStyle = '#1A1816';
-      ctx.font = 'bold 150px "Caveat", "Alex Brush", cursive';
+      ctx.font = 'bold 160px "High Empathy", cursive';
       ctx.fillText('Areca', w / 2, 270);
 
       // 4. Subtitles
-      ctx.fillStyle = '#7A551E';
-      ctx.font = 'bold 36px "Montserrat", sans-serif';
+      ctx.fillStyle = '#A37433';
+      ctx.font = 'bold 36px "Laila", serif';
       ctx.fillText('THE CULINARY DESTINATION', w / 2, 345);
 
       ctx.fillStyle = '#3E3A33';
-      ctx.font = '600 28px "Montserrat", sans-serif';
+      ctx.font = '600 28px "Laila", serif';
       ctx.fillText('BY LA-FLORA', w / 2, 395);
 
       // 5. Divider Line
-      ctx.strokeStyle = '#9F7B3F';
+      ctx.strokeStyle = '#A37433';
       ctx.lineWidth = 3;
       ctx.beginPath();
       ctx.moveTo(250, 440);
@@ -448,7 +542,7 @@
 
       ctx.fillStyle = '#FFFFFF';
       ctx.fillRect(qrCardX, qrCardY, qrCardSize, qrCardSize);
-      ctx.strokeStyle = '#9F7B3F';
+      ctx.strokeStyle = '#A37433';
       ctx.lineWidth = 3;
       ctx.strokeRect(qrCardX, qrCardY, qrCardSize, qrCardSize);
 
@@ -459,7 +553,7 @@
 
       // 7. Instruction text
       ctx.fillStyle = '#1A1816';
-      ctx.font = 'bold 38px "Montserrat", sans-serif';
+      ctx.font = 'bold 38px "Laila", serif';
       ctx.fillText('Scan with phone camera to view menu', w / 2, 1200);
 
       // 8. Divider Line
@@ -470,16 +564,16 @@
 
       // 9. Contact Info
       ctx.fillStyle = '#2C2A26';
-      ctx.font = '600 34px "Montserrat", sans-serif';
+      ctx.font = '600 34px "Laila", serif';
       ctx.fillText('Areca, La Flora, Ville Flora', w / 2, 1340);
 
-      ctx.fillStyle = '#7A551E';
-      ctx.font = 'bold 40px "Montserrat", sans-serif';
+      ctx.fillStyle = '#A37433';
+      ctx.font = 'bold 40px "Laila", serif';
       ctx.fillText('Enquiries: 97379 82028', w / 2, 1410);
 
       // 10. Thank You Script Logo
       ctx.fillStyle = '#1A1816';
-      ctx.font = 'bold 90px "Caveat", "Alex Brush", cursive';
+      ctx.font = 'bold 96px "High Empathy", cursive';
       ctx.fillText('Thank you for dining with us', w / 2, 1550);
 
       // 11. Trigger Download
@@ -594,19 +688,61 @@
       });
     }
 
-    // Info & QR Modals
-    DOM.infoModalBtn.addEventListener('click', () => DOM.infoModal.removeAttribute('hidden'));
-    DOM.closeInfoBtn.addEventListener('click', () => DOM.infoModal.setAttribute('hidden', ''));
-    DOM.infoModal.addEventListener('click', (e) => {
-      if (e.target === DOM.infoModal) DOM.infoModal.setAttribute('hidden', '');
-    });
+    // Slide-out 3-Line Luxury Drawer Controls
+    if (DOM.menuDrawerBtn && DOM.menuDrawer) {
+      DOM.menuDrawerBtn.addEventListener('click', () => {
+        triggerHaptic();
+        DOM.menuDrawer.removeAttribute('hidden');
+      });
+    }
+    if (DOM.closeDrawerBtn && DOM.menuDrawer) {
+      DOM.closeDrawerBtn.addEventListener('click', () => {
+        DOM.menuDrawer.setAttribute('hidden', '');
+      });
+    }
+    if (DOM.menuDrawer) {
+      DOM.menuDrawer.addEventListener('click', (e) => {
+        if (e.target === DOM.menuDrawer) DOM.menuDrawer.setAttribute('hidden', '');
+      });
+    }
+    if (DOM.drawerSelectionBtn) {
+      DOM.drawerSelectionBtn.addEventListener('click', () => {
+        if (DOM.menuDrawer) DOM.menuDrawer.setAttribute('hidden', '');
+        openSelectionModal();
+      });
+    }
+    if (DOM.drawerTimingsBtn) {
+      DOM.drawerTimingsBtn.addEventListener('click', () => {
+        if (DOM.menuDrawer) DOM.menuDrawer.setAttribute('hidden', '');
+        if (DOM.infoModal) DOM.infoModal.removeAttribute('hidden');
+      });
+    }
 
-    DOM.qrModalBtn.addEventListener('click', () => DOM.qrModal.removeAttribute('hidden'));
-    DOM.closeQrBtn.addEventListener('click', () => DOM.qrModal.setAttribute('hidden', ''));
-    DOM.qrModal.addEventListener('click', (e) => {
-      if (e.target === DOM.qrModal) DOM.qrModal.setAttribute('hidden', '');
-    });
+    // Info Modal
+    if (DOM.infoModalBtn && DOM.infoModal) {
+      DOM.infoModalBtn.addEventListener('click', () => DOM.infoModal.removeAttribute('hidden'));
+    }
+    if (DOM.closeInfoBtn && DOM.infoModal) {
+      DOM.closeInfoBtn.addEventListener('click', () => DOM.infoModal.setAttribute('hidden', ''));
+    }
+    if (DOM.infoModal) {
+      DOM.infoModal.addEventListener('click', (e) => {
+        if (e.target === DOM.infoModal) DOM.infoModal.setAttribute('hidden', '');
+      });
+    }
 
+    // Optional Table QR Modal (staff/admin)
+    if (DOM.qrModalBtn && DOM.qrModal) {
+      DOM.qrModalBtn.addEventListener('click', () => DOM.qrModal.removeAttribute('hidden'));
+    }
+    if (DOM.closeQrBtn && DOM.qrModal) {
+      DOM.closeQrBtn.addEventListener('click', () => DOM.qrModal.setAttribute('hidden', ''));
+    }
+    if (DOM.qrModal) {
+      DOM.qrModal.addEventListener('click', (e) => {
+        if (e.target === DOM.qrModal) DOM.qrModal.setAttribute('hidden', '');
+      });
+    }
     if (DOM.printStandBtn) {
       DOM.printStandBtn.addEventListener('click', printStand);
     }
@@ -617,8 +753,9 @@
     // Keyboard ESC
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        DOM.infoModal.setAttribute('hidden', '');
-        DOM.qrModal.setAttribute('hidden', '');
+        if (DOM.infoModal) DOM.infoModal.setAttribute('hidden', '');
+        if (DOM.qrModal) DOM.qrModal.setAttribute('hidden', '');
+        if (DOM.menuDrawer) DOM.menuDrawer.setAttribute('hidden', '');
         if (DOM.selectionModal) closeSelectionModal();
       }
     });
